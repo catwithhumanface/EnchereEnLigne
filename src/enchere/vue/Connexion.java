@@ -6,6 +6,7 @@ package enchere.vue;
 
 import enchere.controler.GestionMembresControler;
 import enchere.model.Membre;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,11 +20,16 @@ public class Connexion extends javax.swing.JFrame {
     public Connexion() {
         initComponents();
         gestionMembreControler = new GestionMembresControler();
-        gestionMembreControler.getTypeMembres();
-        jComboBoxTypeConnexion.addItem("Ff");
-            
+        putTypeMembres();
     }
-
+     
+    public void putTypeMembres(){
+        ArrayList<String> typeMembres = new ArrayList<String>();
+        typeMembres = gestionMembreControler.getTypeMembres();
+        for(String typeMembre : typeMembres){
+            jComboBoxTypeConnexion.addItem(typeMembre);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,8 +41,8 @@ public class Connexion extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jTextFieldPseudo = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTextFieldMdp = new javax.swing.JTextField();
+        jButtonSeConnecter = new javax.swing.JButton();
         jButtonAccueil = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -53,13 +59,18 @@ public class Connexion extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldMdp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldMdpActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Se connecter");
+        jButtonSeConnecter.setText("Se connecter");
+        jButtonSeConnecter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeConnecterActionPerformed(evt);
+            }
+        });
 
         jButtonAccueil.setText("Accueil");
         jButtonAccueil.addActionListener(new java.awt.event.ActionListener() {
@@ -88,17 +99,17 @@ public class Connexion extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldPseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxTypeConnexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(102, 102, 102))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonAccueil)
-                        .addGap(18, 18, 18))
+                        .addComponent(jButtonSeConnecter)
+                        .addGap(150, 150, 150))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(150, 150, 150))))
+                        .addComponent(jButtonAccueil)
+                        .addGap(18, 18, 18))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,10 +126,10 @@ public class Connexion extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jButtonSeConnecter)
                 .addGap(54, 54, 54))
         );
 
@@ -146,9 +157,20 @@ public class Connexion extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonAccueilActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldMdpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMdpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldMdpActionPerformed
+
+    private void jButtonSeConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeConnecterActionPerformed
+
+        if(gestionMembreControler.getLoginMembre(jTextFieldPseudo.getText(), jTextFieldMdp.getText(), String.valueOf(jComboBoxTypeConnexion.getSelectedItem()))!=null){
+            Index index = new Index(gestionMembreControler.getLoginMembre(jTextFieldPseudo.getText(), jTextFieldMdp.getText(), String.valueOf(jComboBoxTypeConnexion.getSelectedItem())));
+            index.setVisible(true);
+            this.dispose();
+        }else{
+            
+        }
+    }//GEN-LAST:event_jButtonSeConnecterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,14 +209,14 @@ public class Connexion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAccueil;
+    private javax.swing.JButton jButtonSeConnecter;
     private javax.swing.JComboBox<String> jComboBoxTypeConnexion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldMdp;
     private javax.swing.JTextField jTextFieldPseudo;
     // End of variables declaration//GEN-END:variables
 }

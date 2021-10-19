@@ -5,6 +5,8 @@
 package enchere.vue;
 
 import enchere.controler.GestionMembresControler;
+import enchere.model.Membre;
+import java.util.ArrayList;
 
 /**
  *
@@ -12,6 +14,8 @@ import enchere.controler.GestionMembresControler;
  */
 public class Index extends javax.swing.JFrame {
     private GestionMembresControler membreControler;
+    private Membre membre;
+    private javax.swing.JLabel jLabelPrenom;
     /**
      * Creates new form Index
      */
@@ -19,6 +23,14 @@ public class Index extends javax.swing.JFrame {
         initComponents();
         membreControler = new GestionMembresControler();
     }
+    
+    public Index(Membre membre){
+        initComponents();
+        jButtonConnexion.setVisible(false);
+        jButtonSinscrire.setVisible(false);
+        this.membre = membre;
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.

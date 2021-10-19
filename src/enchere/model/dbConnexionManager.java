@@ -45,12 +45,12 @@ public class dbConnexionManager  {
         return rowCount;
     }
     
-    private static Connection getConnection() throws SQLException, ClassNotFoundException {
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName(DRIVER);
         return DriverManager.getConnection(URL, USERNAME, "root");
     }
     
-    private static void closeObjects(Connection connection, Statement statement) {
+    public static void closeObjects(Connection connection, Statement statement) {
         try {
             if (connection != null) {
                 connection.close();
