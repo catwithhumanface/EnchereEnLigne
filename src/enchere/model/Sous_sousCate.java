@@ -1,15 +1,18 @@
 package enchere.model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.sql.PreparedStatement;
 
-public class SousCategorie {
-    // Afficher les infos dans la page mise en vente
-    public ArrayList<String> getTypeSousCat(String cateChoix){
+public class Sous_sousCate {
+    
+    // Afficher les infos dans la page de mise en vente
+    
+    
+    public ArrayList<String> getSous_sousCat(String souscateChoix){
         ResultSet rs = null;
         ArrayList<String> result = new ArrayList<String>();
         Connection connection = null;
@@ -17,12 +20,12 @@ public class SousCategorie {
        
         try {    
             connection = dbConnexionManager.getConnection();
-            pstmt= connection.prepareStatement(GestionVenteSQL.GETSOUSCAT);
-            pstmt.setString(1, cateChoix);
+            pstmt= connection.prepareStatement(GestionVenteSQL.GETSOUS_SOUS);
+            pstmt.setString(1, souscateChoix);
             
             rs = pstmt.executeQuery();
             while(rs.next()){           
-                String cateAjout = rs.getString("LibSousCat");
+                String cateAjout = rs.getString("LibSous_sous");
                 result.add(cateAjout);  
             }       
                   
@@ -33,5 +36,6 @@ public class SousCategorie {
         }
         return result;
     }
+
 
 }
