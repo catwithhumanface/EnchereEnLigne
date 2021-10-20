@@ -15,6 +15,7 @@ public class Membre {
         
     }
     
+    //trouver les types Membres afin d'afficher lors de la connexion
     public ArrayList<String> getTypeMembres() {
         Connection connection = null;
         Statement statement = null;
@@ -34,6 +35,7 @@ public class Membre {
         return typeMembre;
     }
     
+    //vérifier si le psuedo est unique
     public static Boolean checkPseudo(String pseudo){
         Boolean flag = false;
         Connection connection = null;
@@ -58,6 +60,7 @@ public class Membre {
         return flag;
     }
     
+    //se connectet
     public static Membre getLoginMembre(String pseudo, String mdp, int type){
         Membre membre = null;
         Connection connection = null;

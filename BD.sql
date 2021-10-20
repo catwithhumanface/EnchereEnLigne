@@ -3,7 +3,6 @@ drop table Choisir;
 drop table Commenter;
 drop table Statistique;
 drop table Objet;
-drop table Contenir_Cate;
 drop table Sous_souscategorie;
 drop table SousCategorie;
 drop table Categorie;
@@ -88,8 +87,8 @@ CREATE TABLE Objet
 	DescO VARCHAR(255),
 	PrixDepart INT,
 	PrixReserve INT,
-	Prixachatimmédiat INT,
-	Régiondelivraison VARCHAR(255),
+	Prixachatimmediat INT,
+	Regiondelivraison VARCHAR(255),
 	Datedecloture DATE,
 	EtatVente VARCHAR(255),
 	PrixAchat VARCHAR(255),
@@ -223,3 +222,7 @@ insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (1, 'Télé
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (1, 'Téléviseur16/9');
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (3, 'Lave linge');
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (3, 'Sèche linge');
+
+insert into objet (TitreA, DescO, PrixDepart, PrixReserve, Prixachatimmediat, Regiondelivraison, Datedecloture,
+EtatVente, PrixAchat, idMembre, )
+
