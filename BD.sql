@@ -29,7 +29,7 @@ CREATE TABLE Membre
     Email VARCHAR(255),
     NomM VARCHAR(255),
     PrenomM VARCHAR(255),
-    PasseWordM VARCHAR(255)
+    PasseWordM VARCHAR(255) 
 );
 
 CREATE TABLE Frais
@@ -79,23 +79,11 @@ CREATE TABLE Sous_souscategorie
 	FOREIGN Key(IdSousCategorie) references SousCategorie(IdSousCategorie)	
 );
 
-CREATE TABLE Contenir_Cate
-(
-
-	idSous_sous INT,
-	IdSousCategorie INT,
-
-	FOREIGN KEY(idSous_sous) REFERENCES Sous_souscategorie(idSous_sous),
-	FOREIGN KEY(IdSousCategorie) REFERENCES SousCategorie(IdSousCategorie),
-
-	PRIMARY KEY(IdSousCategorie,idSous_sous)
-);
 
 
 CREATE TABLE Objet 
 (
 	idObjet INT PRIMARY KEY AUTO_INCREMENT,
-	NumO VARCHAR(255),
 	TitreA VARCHAR(255),
 	DescO VARCHAR(255),
 	PrixDepart INT,
@@ -190,7 +178,6 @@ Insert into TypeMembre (idTypeMembre, nomTypeMembre) VALUES (4, 'Service Juridiq
 
 
 
-ALTER TABLE Membre AUTO_INCREMENT=0;
 insert into Membre
 (
     PseudoMembre,
@@ -214,7 +201,7 @@ values("joohyunAnn",
     "31000", 
     "Toulouse",
     "France",
-    "Normal",
+    "Membre",
     "06060606",
     "a@a.com",
     "Ann",
@@ -222,3 +209,17 @@ values("joohyunAnn",
     "aaa",
     1
 );
+INSERT INTO Categorie (LibCat) VALUES ( 'Multimédia');
+INSERT INTO Categorie (LibCat) VALUES ( 'Electroménager');
+INSERT INTO Categorie (LibCat) VALUES ( 'Mobilier');
+
+
+insert into SousCategorie (LibSousCat,idCodeCat) VALUES ( 'Télévision', 1);
+insert into SousCategorie (LibSousCat,idCodeCat) VALUES ( 'Vidéo', 1);
+insert into SousCategorie (LibSousCat,idCodeCat) VALUES ( 'Lavage', 2);
+insert into SousCategorie (LibSousCat,idCodeCat) VALUES ( 'Froid', 2);
+
+insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (1, 'Téléviseur4/3');
+insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (1, 'Téléviseur16/9');
+insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (3, 'Lave linge');
+insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (3, 'Sèche linge');
