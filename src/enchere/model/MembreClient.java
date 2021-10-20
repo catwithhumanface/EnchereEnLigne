@@ -85,7 +85,8 @@ public class MembreClient extends Membre {
     public String getPasseWordM() {
         return passeWordM;
     }
-
+    
+    //inscrire un membre en tant que client
     public Boolean inscrire(String nom, String prenom, Date dateN, String email, String rue, String cpm, 
                 String ville, String pays, String numtel, String pseudo, String mdp){
         
