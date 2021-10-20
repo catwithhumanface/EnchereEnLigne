@@ -1,9 +1,9 @@
 package enchere.model;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class MembreClient extends Membre {
     private int idMembre;
@@ -19,6 +19,10 @@ public class MembreClient extends Membre {
     private String prenomM;
     private String passeWordM;
    
+    public MembreClient(){
+        
+    }
+    
     public MembreClient(int idMembre, String pseudoMembre, String dateNM, String rueM, String villeM, String paysM, String etatM,
             String numTel, String email, String nomM, String prenomM, String passeWordM){
         this.idMembre = idMembre;
@@ -82,30 +86,43 @@ public class MembreClient extends Membre {
         return passeWordM;
     }
 
-    
-    public void inscrire(String nom, String prenom, String dateN, String email, String rue, String cpm, 
+    public Boolean inscrire(String nom, String prenom, Date dateN, String email, String rue, String cpm, 
                 String ville, String pays, String numtel, String pseudo, String mdp){
-        Membre membre = null;
+        
+        Boolean flag = false;
+        Membre membre = new Membre();
         Connection connection = null;
-        Statement statement = null;
-        ResultSet result = null;
+        PreparedStatement pstmt = null;
+        
+        String sql = MembreSQL.SIGN_UP;
         try {
             connection = dbConnexionManager.getConnection();
-            statement = connection.createStatement();
-            String query = "insert into Membre (PseudoMembre, DateNM, RueM, CPM, VillM, PaysM, Numtel, Email, NomM, PrenomM, PasseWordM, idTypeMembre)"
-                    + "values ('"+ pseudo +"', '"+dateN+ "', '"+ rue + "', '"+ cpm + "', '"+ ville +"', '"+ pays + "', '"+ numtel+ "', '" 
-                            + email + "', '"+ nom+ "', '"+ prenom+ "', '"+ mdp + "' , 1)";
-            System.out.println(query);
-                            
-            result = statement.executeQuery(query);
-            if(result.next()){
+            pstmt = connection.prepareStatement(sql);
+            
+            pstmt.setString(1, pseudo);
+            pstmt.setDate(2, dateN);
+            pstmt.setString(3, rue);
+            pstmt.setString(4, cpm);
+            pstmt.setString(5, ville);
+            pstmt.setString(6, pays);
+            pstmt.setString(7, numtel);
+            pstmt.setString(8, email);
+            pstmt.setString(9, nom);
+            pstmt.setString(10, prenom);
+            pstmt.setString(11, mdp);
+            
+            int i = pstmt.executeUpdate();
+            
+            if(i==1){
+               flag = true;
                System.out.println("inscription reussie");
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            dbConnexionManager.closeObjects(connection, statement);
+            dbConnexionManager.closeObjects(connection, pstmt);
         }
+        return flag;
     }
     
 }

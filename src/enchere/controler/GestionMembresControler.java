@@ -2,6 +2,7 @@ package enchere.controler;
 
 import enchere.model.*;
 import java.util.ArrayList;
+import java.sql.Date;
 
 public class GestionMembresControler {
 	private MembreServiceCommercial membreServiceCommercial;
@@ -12,6 +13,7 @@ public class GestionMembresControler {
 	
 	public GestionMembresControler() {
             membre = new Membre();
+            membreClient = new MembreClient();
 //            Membre m = new MembreClient();
 //            if(m instanceof MembreClient){
 //                MembreClient m2 = (MembreClient) m;
@@ -37,9 +39,14 @@ public class GestionMembresControler {
             //return Membre.getLoginMembre(pseudo, mdp, typeInt);
         }
         
-        public void inscrire(String nom, String prenom, String dateN, String email, String rue, String cpm, 
+        public Boolean inscrire(String nom, String prenom, Date dateN, String email, String rue, String cpm, 
                 String ville, String pays, String numtel, String pseudo, String mdp){
-            membreClient.inscrire(nom, prenom, dateN, email, rue, cpm, ville, pays, numtel, pseudo, mdp);
             
+            return membreClient.inscrire(nom, prenom, dateN, email, rue, cpm, ville, pays, numtel, pseudo, mdp);
+            
+        }
+        
+        public Boolean checkPseudo(String pseudo){
+            return membreClient.checkPseudo(pseudo);
         }
 }

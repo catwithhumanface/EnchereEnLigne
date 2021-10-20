@@ -131,7 +131,12 @@ public class Index extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConsulteEncheresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsulteEncheresActionPerformed
-        ConsulterEncheres consulterEncheres = new ConsulterEncheres();
+        ConsulterEncheres consulterEncheres;
+        if(membre!=null){
+            consulterEncheres = new ConsulterEncheres(membre);
+        }else{
+            consulterEncheres = new ConsulterEncheres();
+        }
         consulterEncheres.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonConsulteEncheresActionPerformed
