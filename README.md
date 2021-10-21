@@ -38,34 +38,34 @@ MySQL<br>
 <br>
 
 ## 5. Structure du système (MVC pattern)
-![structure1](img/structure1.png)
+![structure2](img/structure2.png)
 <br>
 
-![structure2](img/structure2.png)
+![structure1](img/structure1.png)
 <br>
 
 # Results
 ## 1. Résultat
 ### *Gestion des Membres*
-![ConnexionClient](img/ConnexionClient.gif)
+![ConnexionClient](img/connexionClient (1).gif)
 <br>
 
 ---
 
-![ConsulterMesParticipations](img/ConsulterMesParticipations.gif)
+![ConsulterMesParticipations](img/consulterMesparticipations.gif)
 <br>
 &nbsp; **Connexion**, **Consulter les enchères en cours**, **Enchérir sur un objet**, **Consulter mes participations**
 
 ---
 
 
-![ConnexionServiceClient](img/ConnexionServiceClient.gif)
+![ConnexionServiceClient](img/connexionServiceCommercial.gif)
 <br>
 &nbsp; **Connexion**, **Consulter les enchères en cours**, **Consulter les statistiques**
 
 ---
 
-![InscriptionClient](img/InscriptionClient.gif)
+![InscriptionClient](img/inscriptionClient.gif)
 <br>
 &nbsp; **Inscription*
 
@@ -78,7 +78,7 @@ MySQL<br>
 
 ---
 
-![MiseEnVenteMembre](img/MiseEnVente.gif)
+![MiseEnVenteMembre](img/MiseEnVenteMembre.gif)
 <br>
 &nbsp; **MiseEnVenteMembre**
 Se connecter étant que « membre », réaliser une mise en vente
