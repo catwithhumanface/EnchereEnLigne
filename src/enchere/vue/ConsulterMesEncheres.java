@@ -290,9 +290,9 @@ public class ConsulterMesEncheres extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jLabel13))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel14))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel11))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 

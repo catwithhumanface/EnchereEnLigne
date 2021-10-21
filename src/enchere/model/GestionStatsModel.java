@@ -179,7 +179,7 @@ public class GestionStatsModel {
             int nbObjet=statistique.calculNbObjetTotal();
             //On verifie que les stats n'existe pas dans la BDD
             if (!listSemaineStat().contains(""+semaine)){
-                System.out.println("semia"+listSemaineStat()+semaine);
+                
                 try {
                     connection = DbConnexionManager.getConnection();
                     statement = connection.createStatement();

@@ -124,10 +124,8 @@ CREATE TABLE Statistique
 	Vis_Total INT,
 	NbObjet INT,
 	
-    IdCodeCat INT,
-	FOREIGN KEY (IdCodeCat) REFERENCES Categorie (IdCodeCat),
-	
-	PRIMARY KEY(AnneeSemaine,IdCodeCat)
+   	
+	PRIMARY KEY(AnneeSemaine)
 
 
 );
