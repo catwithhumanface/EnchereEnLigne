@@ -44,4 +44,12 @@ public class GestionMembresControler {
     public Boolean checkPseudo(String pseudo){
         return membreClient.checkPseudo(pseudo);
     }
+    
+    public ArrayList<Objet> getMesVentes(int idMembre){
+        return membreClient.getMesVentes(idMembre);
+    }
+    
+    public ArrayList<Enchere> getMesEncheres(int idMembre){
+        return membreClient.getMesEncheres(idMembre);
+    }
 }

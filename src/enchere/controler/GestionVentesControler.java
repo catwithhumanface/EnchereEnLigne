@@ -1,20 +1,28 @@
+
 package enchere.controler;
 import enchere.model.Categorie;
+import enchere.model.Enchere;
+import enchere.model.MembreClient;
 import enchere.model.SousCategorie;
 import enchere.model.Sous_sousCate;
 import enchere.model.Objet;
+import enchere.model.Enchere;
 import java.util.ArrayList;
 import enchere.model.RegionL;
 import java.sql.Date;
 import java.sql.Connection;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class GestionVentesControler {
     private ArrayList<Objet> objets = new ArrayList<Objet>();
-    private Objet objet = new Objet();
     private Categorie categorie;
     private SousCategorie souscate;
     private Sous_sousCate sousSous;
     private RegionL region;
+    private Enchere enchere;
+    private MembreClient membreClient;
+    private Objet objet;
     
     public GestionVentesControler(){
         categorie = new Categorie();
@@ -22,6 +30,7 @@ public class GestionVentesControler {
         sousSous = new Sous_sousCate();
         objet = new Objet();
         region = new RegionL();
+        enchere = new Enchere();
     }
     
     public  ArrayList<String> getTypeRegion(){
@@ -45,9 +54,9 @@ public class GestionVentesControler {
     }
     
     public void validerMisenVente(String TitreA,String DescO,int PrixDepart,int PrixReserver, 
-            int PrixAchatimmediat,String Regiondelivraison, Date Datedecloture, 
+            int PrixAchatimmediat,int idMembre,String Regiondelivraison, Date Datedecloture, 
             int FraisPort,String Cate,String souscate,String Sous_sous){
-        objet.misenVente(TitreA, DescO, PrixDepart, PrixReserver, PrixAchatimmediat, Regiondelivraison, Datedecloture, 
+        objet.misenVente(TitreA, DescO, PrixDepart, PrixReserver, PrixAchatimmediat,idMembre, Regiondelivraison, Datedecloture, 
                 FraisPort, Cate, souscate,Sous_sous);
      }
      
@@ -55,5 +64,17 @@ public class GestionVentesControler {
     public ArrayList<Objet> getLesObjets() {
         return objet.getLesObjets();
     }
+    
+    public Boolean validerEnchere(int montantPas,int montantMax,int idNumo,int idMembre,Timestamp dateheure){
+        return enchere.validerEncherir(montantPas,montantMax,idNumo,idMembre,dateheure);
+     }
                 
+    public ArrayList<Enchere> getEncheres(int idObjet){
+        return objet.getEncheres(idObjet);
+    }
+    
+    public String getNomPrenomMembre(int idMembre){
+        return objet.getNomPrenomMembre(idMembre);
+    }
 }
+
