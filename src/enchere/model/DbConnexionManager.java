@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class DbConnexionManager  {
     
     private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private final static String URL = "jdbc:mysql://localhost:3307/encheres";
+    private final static String URL = "jdbc:mysql://localhost:3306/encherev1";
     private final static String USERNAME = "root";
     
     /* Use for INSERT, UPDATE or DELETE queries */
@@ -36,7 +36,7 @@ public class DbConnexionManager  {
     
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName(DRIVER);
-        return DriverManager.getConnection(URL, USERNAME, "");
+        return DriverManager.getConnection(URL, USERNAME, "root");
     }
     
     public static void closeObjects(Connection connection, Statement statement) {
