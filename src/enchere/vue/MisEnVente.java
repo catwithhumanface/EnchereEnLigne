@@ -6,28 +6,38 @@ package enchere.vue;
 
 import enchere.controler.GestionVentesControler;
 import javax.swing.JOptionPane;
+import enchere.model.Membre;
+import enchere.model.MembreClient;
 
 /**
  *
  * @author Tong
  */
 public class MisEnVente extends javax.swing.JFrame {
+        private MembreClient membre;
+        private GestionVentesControler gestionVentesControler; 
 
-    GestionVentesControler gestionVentesControler = new GestionVentesControler();
-
-    // Avant que l'utilisateur saisie les données, les régions et les catégories sont prédéfinit dans la liste
-    public MisEnVente() {
-
-        initComponents();
-        for (String categorieAjout : gestionVentesControler.getCategorie()) {
-            categorie.addItem(categorieAjout);
+        // Avant que l'utilisateur saisie les données, les régions et les catégories sont prédéfinit dans la liste
+        public MisEnVente() {
+            initComponents();
         }
 
-        for (String regionAjout : gestionVentesControler.getTypeRegion()) {
-            Regiondelivraison.addItem(regionAjout);
-        }
+        public MisEnVente(Membre membre) {
 
-    }
+            initComponents();
+            gestionVentesControler = new GestionVentesControler();
+            
+            for (String categorieAjout : gestionVentesControler.getCategorie()) {
+                categorie.addItem(categorieAjout);
+            }
+
+            for (String regionAjout : gestionVentesControler.getTypeRegion()) {
+                Regiondelivraison.addItem(regionAjout);
+            }
+            
+            
+
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -302,6 +312,7 @@ public class MisEnVente extends javax.swing.JFrame {
         String Cate = this.categorie.getSelectedItem().toString();
         String SousCate = this.sousCategorie.getSelectedItem().toString();
         String Sous_sous = this.sous_Sous.getSelectedItem().toString();
+        int idMembre = membre.getIdMembre();
 
         // Vérifier si les infos sont bien saisi, on va les transformer son format pour insérer à BD
         if (TitreA.equals("") || DescO.equals("") || PrixDepart.equals("") || PrixReserve.equals("") || Datedecoloture == null
@@ -313,7 +324,7 @@ public class MisEnVente extends javax.swing.JFrame {
             int PrixReservesql = Integer.parseInt(PrixReserve);
             int FraisPortsql = Integer.parseInt(FraisPort);
             gestionVentesControler.validerMisenVente(TitreA, DescO, PrixDepartsql, PrixReservesql,
-                    Prixachatimmediat, Regiondelivraison, sqldateL, FraisPortsql, Cate, SousCate, Sous_sous);
+                    Prixachatimmediat,idMembre, Regiondelivraison, sqldateL, FraisPortsql, Cate, SousCate, Sous_sous);
         }
 
 

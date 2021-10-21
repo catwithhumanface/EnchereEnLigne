@@ -197,7 +197,7 @@ public class Objet {
      
 
     public void misenVente(String TitreA, String DescO, int PrixDepart, int PrixReserver,
-            int PrixAchatimmediat, String Regiondelivraison, Date Datedecloture,
+            int PrixAchatimmediat,int idMembre, String Regiondelivraison, Date Datedecloture,
             int FraisPort, String Cate, String SousCate, String Sous_sous) {
 
         Connection connection = null;
@@ -254,10 +254,12 @@ public class Objet {
             pstmt.setInt(5, PrixAchatimmediat);
             pstmt.setString(6, Regiondelivraison);
             pstmt.setDate(7, Datedecloture);
-            pstmt.setInt(8, FraisPort);
-            pstmt.setInt(9, IdCodeCat);      
-            pstmt.setInt(10, IdSousCategorie);
-            pstmt.setInt(11, IdSous_sous);
+            pstmt.setInt(8,PrixDepart);
+            pstmt.setInt(9,idMembre);
+            pstmt.setInt(10, FraisPort);
+            pstmt.setInt(11, IdCodeCat);      
+            pstmt.setInt(12, IdSousCategorie);
+            pstmt.setInt(13, IdSous_sous);
             
             // vérifier si les données sont bien saisis
             int i = pstmt.executeUpdate();

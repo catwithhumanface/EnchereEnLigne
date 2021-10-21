@@ -21,6 +21,7 @@ public class GestionVentesControler {
     private RegionL region;
     private Enchere enchere;
     private MembreClient membreClient;
+    private Objet objet;
     
     public GestionVentesControler(){
         categorie = new Categorie();
@@ -52,9 +53,9 @@ public class GestionVentesControler {
     }
     
     public void validerMisenVente(String TitreA,String DescO,int PrixDepart,int PrixReserver, 
-            int PrixAchatimmediat,String Regiondelivraison, Date Datedecloture, 
+            int PrixAchatimmediat,int idMembre,String Regiondelivraison, Date Datedecloture, 
             int FraisPort,String Cate,String souscate,String Sous_sous){
-        objet.misenVente(TitreA, DescO, PrixDepart, PrixReserver, PrixAchatimmediat, Regiondelivraison, Datedecloture, 
+        objet.misenVente(TitreA, DescO, PrixDepart, PrixReserver, PrixAchatimmediat,idMembre, Regiondelivraison, Datedecloture, 
                 FraisPort, Cate, souscate,Sous_sous);
      }
      
