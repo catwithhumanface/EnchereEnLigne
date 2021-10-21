@@ -8,6 +8,7 @@ import enchere.controler.GestionVentesControler;
 import enchere.model.Membre;
 import enchere.model.Objet;
 import java.util.ArrayList;
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -22,6 +23,7 @@ public class ConsulterEncheres extends javax.swing.JFrame {
     private ArrayList<JLabel> jLabelTitres;
     private ArrayList<JLabel> jLabelPrix;
     private ArrayList<JButton> jButtonDetail;
+    private ArrayList<Action> actions;
     /**
      * Creates new form ConsulterEncheres
      */
@@ -82,6 +84,10 @@ public class ConsulterEncheres extends javax.swing.JFrame {
             System.out.println("k="+k);
             jLabelTitres.get(k).setVisible(true);
             jLabelTitres.get(k).setText(objets.get(k).getTitreA());
+            jLabelPrix.get(k).setVisible(true);
+            jLabelPrix.get(k).setText(Integer.toString(objets.get(k).getPrixAchat()));
+            jButtonDetail.get(k).setVisible(true);
+            jButtonDetail.get(k).setText("Enchérir");
         }
         
         
