@@ -10,6 +10,7 @@ import enchere.model.MembreClient;
 import javax.swing.JOptionPane;
 import enchere.model.Membre;
 import enchere.model.MembreClient;
+import java.time.Clock;
 
 /**
  *
@@ -34,6 +35,11 @@ public class MisEnVente extends javax.swing.JFrame {
 
         for (String regionAjout : gestionVentesControler.getTypeRegion()) {
             Regiondelivraison.addItem(regionAjout);
+        }
+        if (membre.getEtatM().equals("Membre")){
+            System.out.println("c'est un membre normale");
+            Prixachatimédiat.setEditable(false);
+            PrixReserve.setEditable(false);      
         }
             
             
@@ -92,6 +98,11 @@ public class MisEnVente extends javax.swing.JFrame {
         });
 
         jButton2.setText("Annuler ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Description détaillée");
 
@@ -305,8 +316,6 @@ public class MisEnVente extends javax.swing.JFrame {
         String TitreA = this.TitreA.getText();
         String DescO = this.DescO.getText();
         String PrixDepart = this.PrixDepart.getText();
-        String PrixReserve = this.PrixReserve.getText();
-        int Prixachatimmediat = 0;
         String FraisPort = this.FraiPort.getText();
         //int Prixachatimmédiat = Integer.parseInt(this.Prixachatimédiat.getText());
         String Regiondelivraison = this.Regiondelivraison.getSelectedItem().toString();
@@ -317,17 +326,42 @@ public class MisEnVente extends javax.swing.JFrame {
         int idMembre = membre.getIdMembre();
 
         // Vérifier si les infos sont bien saisi, on va les transformer son format pour insérer à BD
-        if (TitreA.equals("") || DescO.equals("") || PrixDepart.equals("") || PrixReserve.equals("") || Datedecoloture == null
+        if (TitreA.equals("") || DescO.equals("") || PrixDepart.equals("")  || Datedecoloture == null
                 || Cate.equals("") || SousCate.equals("") || Sous_sous.equals("") || Regiondelivraison.equals("")) {
             JOptionPane.showMessageDialog(null, "Veuillez remplir toutes les informations demandées");
+            
         } else {
             java.sql.Date sqldateL = new java.sql.Date(dateL.getTime());
             int PrixDepartsql = Integer.parseInt(PrixDepart);
-            int PrixReservesql = Integer.parseInt(PrixReserve);
             int FraisPortsql = Integer.parseInt(FraisPort);
-            gestionVentesControler.validerMisenVente(TitreA, DescO, PrixDepartsql, PrixReservesql,
-                    Prixachatimmediat,idMembre, Regiondelivraison, sqldateL, FraisPortsql, Cate, SousCate, Sous_sous);
+            
+          if(membre.getEtatM()=="Membre"){
+            gestionVentesControler.validerMisenVente(TitreA, DescO, PrixDepartsql,0,
+                    0,idMembre, Regiondelivraison, sqldateL, FraisPortsql, Cate, SousCate, Sous_sous);
+          }
+          else{
+              String prixAchatimmediat = Prixachatimédiat.getText();
+              String prixReserver = PrixReserve.getText();
+              if(prixAchatimmediat.equals("") || prixReserver.equals("")){
+                  gestionVentesControler.validerMisenVente(TitreA, DescO, PrixDepartsql,0,
+                    0,idMembre, Regiondelivraison, sqldateL, FraisPortsql, Cate, SousCate, Sous_sous);
+                  
+              }
+              else{
+                  int prixReserversql = Integer.parseInt(PrixReserve.getText());
+                  int prixAchatimmediatSql = Integer.parseInt(prixReserver);
+                   gestionVentesControler.validerMisenVente(TitreA, DescO, PrixDepartsql,prixReserversql,
+                    prixAchatimmediatSql,idMembre, Regiondelivraison, sqldateL, FraisPortsql, Cate, SousCate, Sous_sous);
+                }
+             
+            }
+            
+            JOptionPane.showMessageDialog(null,"Vous avez bien mis en vente votre objet");
+            Index indexretourne = new Index(membre);
+            indexretourne.setVisible(true);
+            this.dispose();
         }
+       
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -377,6 +411,13 @@ public class MisEnVente extends javax.swing.JFrame {
     private void PrixDepartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrixDepartActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PrixDepartActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         Index indexretourne = new Index(membre);
+         indexretourne.setVisible(true);
+         this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
