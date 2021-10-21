@@ -7,8 +7,8 @@
 |*Members*|*Contact*|
 |:---:|---|
 |**Joohyun ANN**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](http://github.com/catwithhumanface) [![Gmail Badge](https://img.shields.io/badge/-annjh11@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:annjh11@gmail.com)](mailto:annjh11@gmail.com)|
-|**Tong LIU**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/Gabrielle07) [![Gmail Badge](https://img.shields.io/badge/-tong.liu@ut-capitole.fr-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tong.liu@ut-capitole.fr)](mailto:tong.liu@ut-capitole.fr)|
-|**Annie DAGO**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/Annie-create) [![Gmail Badge](https://img.shields.io/badge/-annie.dago@ut-capitole.fr-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:annie.dago@ut-capitole.fr)](mailto:annie.dago@ut-capitole.fr)|
+|**Tong LIU**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/Gabrielle07) [![Gmail Badge](https://img.shields.io/badge/-tongliu024@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tongliu024@gmail.com)](mailto:tongliu024@gmail.com)|
+|**Annie DAGO**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/Annie-create) [![Gmail Badge](https://img.shields.io/badge/-Lielyannie@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:Lielyannie@gmail.com)](mailto:Lielyannie@gmail.com)|
 
 ## 2. Installation du projet
 1. Copier Code Github 
