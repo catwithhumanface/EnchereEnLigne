@@ -10,63 +10,36 @@ import java.sql.Date;
 
 public class Objet {
 
-    private int numO;
     private int idObjet;
     private String titreA;
     private String descO;
     private int prixDepart;
     private int prixReserve;
     private int prixAchatImmediat;
-    private int fraisPort;
-    private int regionLiv;
-    private int dateCloture;
-    private String etatVente;
-    private int prixAchat;
-    private int visiteObjet;
-     private Frais frais;
-     
-    public Objet(int numO){
-        this.numO=numO;
-        frais = new Frais();
-        }
-
-    public void setNumO(int numO) {
-        this.numO = numO;
-    }
-
-    public void setPrixDepart(int prixDepart) {
-        this.prixDepart = prixDepart;
-    }
-
-    public void setEtatVente(String etatVente) {
-        this.etatVente = etatVente;
-    }
-
-    public void setPrixAchat(int prixAchat) {
-        this.prixAchat = prixAchat;
-    }
-
-    public void setVisiteObjet(int visiteObjet) {
-        this.visiteObjet = visiteObjet;
-    }
-    
-    public int getNumO() {
-        return numO;
     private String regiondelivraison;
     private Date datedecloture;
     private String etatVente;
     private int prixAchat;
+    private int fraisPort;
     private int idMembre;
     private int idFrais;
     private int idCodeCat;
-    
+    private int idSousCategorie;
+    private int idSous_sous;
+    private int visiteObjet;
     private ArrayList<Objet> objets = new ArrayList<Objet>();
+    private Frais frais;
     
     public Objet(){
         
     }
 
-    public Objet(int idObjet, String titreA, String descO, int prixDepart, int prixReserve, int prixAchatImmediat, String regiondelivraison, Date datedecloture, String etatVente, int prixAchat, int idMembre, int idFrais, int idCodeCat) {
+    public Objet(int idObjet){
+        this.idObjet=idObjet;
+        frais = new Frais();
+    }
+
+    public Objet(int idObjet, String titreA, String descO, int prixDepart, int prixReserve, int prixAchatImmediat, String regiondelivraison, Date datedecloture, String etatVente, int prixAchat, int fraisPort, int idMembre, int idFrais, int idCodeCat, int idSousCategorie, int idSous_sous) {
         this.idObjet = idObjet;
         this.titreA = titreA;
         this.descO = descO;
@@ -77,9 +50,24 @@ public class Objet {
         this.datedecloture = datedecloture;
         this.etatVente = etatVente;
         this.prixAchat = prixAchat;
+        this.fraisPort = fraisPort;
         this.idMembre = idMembre;
         this.idFrais = idFrais;
         this.idCodeCat = idCodeCat;
+        this.idSousCategorie = idSousCategorie;
+        this.idSous_sous = idSous_sous;
+    }
+
+    public void setPrixDepart(int prixDepart) {
+        this.prixDepart = prixDepart;
+    }
+
+    public void setPrixAchat(int prixAchat) {
+        this.prixAchat = prixAchat;
+    }
+    
+    public void setVisiteObjet(int visiteObjetnew){
+        this.visiteObjet = visiteObjetnew;
     }
 
     public int getIdObjet() {
@@ -89,7 +77,6 @@ public class Objet {
     public String getTitreA() {
         return titreA;
     }
-
 
     public String getDescO() {
         return descO;
@@ -107,29 +94,54 @@ public class Objet {
         return prixAchatImmediat;
     }
 
-
-    public int getDateCloture() {
-        return dateCloture;
-
     public String getRegiondelivraison() {
         return regiondelivraison;
     }
 
     public Date getDatedecloture() {
         return datedecloture;
-
+    }
 
     public String getEtatVente() {
         return etatVente;
     }
 
-    public int getPrixAchatFinal() {
+    public int getPrixAchat() {
         return prixAchat;
+    }
+
+    public int getFraisPort() {
+        return fraisPort;
+    }
+
+    public int getIdMembre() {
+        return idMembre;
+    }
+
+    public int getIdFrais() {
+        return idFrais;
+    }
+
+    public int getIdCodeCat() {
+        return idCodeCat;
+    }
+
+    public int getIdSousCategorie() {
+        return idSousCategorie;
+    }
+
+    public int getIdSous_sous() {
+        return idSous_sous;
     }
 
     public int getVisiteObjet() {
         return visiteObjet;
     }
+
+    public Frais getFrais() {
+        return frais;
+    }
+    
     //Calcul les frais d'insertion d'un objet 
      public float calculFraisInsertion( Objet objet) {
          
@@ -149,7 +161,7 @@ public class Objet {
         else if(prixDepart>0 && prixDepart<9.99){
              fraisInsertionObjet=frais.getListFraisInsertion().get(0);
         }
-        System.out.println("NUM  "+objet.getNumO()+"fraisInsertion"+fraisInsertionObjet+"prix dep"+prixDepart);
+        System.out.println("NUM  "+objet.getIdObjet()+"fraisInsertion"+fraisInsertionObjet+"prix dep"+prixDepart);
         return fraisInsertionObjet;
 
     }
@@ -157,7 +169,7 @@ public class Objet {
      public float calculFraisCommission(Objet objet) {
         int prixAchat=0;
         float fraisCommissionObjet=0;
-        prixAchat=objet.getPrixAchatFinal();
+        prixAchat=objet.getPrixAchat();
         if(prixAchat>1000){
             fraisCommissionObjet=frais.getListFraisCommission().get(2);
         }
@@ -183,22 +195,6 @@ public class Objet {
       return CAObjet;
   }
      
-   
-    public int getPrixAchat() {
-        return prixAchat;
-    }
-
-    public int getIdMembre() {
-        return idMembre;
-    }
-
-    public int getIdFrais() {
-        return idFrais;
-    }
-
-    public int getIdCodeCat() {
-        return idCodeCat;
-    }
 
     public void misenVente(String TitreA, String DescO, int PrixDepart, int PrixReserver,
             int PrixAchatimmediat, String Regiondelivraison, Date Datedecloture,
@@ -221,7 +217,7 @@ public class Objet {
 
         try {
 
-            connection = dbConnexionManager.getConnection();
+            connection = DbConnexionManager.getConnection();
             pstmt = connection.prepareStatement(sqlGetCate);
             pstmt.setString(1,Cate);
             
@@ -269,10 +265,10 @@ public class Objet {
             if (i == 1) {
                 System.out.println("Mise en vente reussie");
               }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException| ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-          dbConnexionManager.closeObjects(connection, pstmt);
+          DbConnexionManager.closeObjects(connection, pstmt);
         }
     }
   
@@ -285,10 +281,11 @@ public class Objet {
         Connection connection = null;
         Statement statement = null;
         ResultSet result = null;
+        String sql = GestionVenteSQL.GETLESOBJETS;
         try {
-            connection = dbConnexionManager.getConnection();
+            connection = DbConnexionManager.getConnection();
             statement = connection.createStatement();
-            result = statement.executeQuery("Select * from Objet");
+            result = statement.executeQuery(sql);
             while(result.next()){
                 int idObjet = result.getInt(1);
                 String titreA = result.getString(2);
@@ -303,14 +300,73 @@ public class Objet {
                 int idMembre = result.getInt(11);
                 int idFrais = result.getInt(12);
                 int idCodeCat = result.getInt(13);
-                Objet objet = new Objet(idObjet, titreA, descO, prixDepart, prixReserve, prixAchatImmediat, regiondelivraison, datedecloture, etatVente, prixAchat, idMembre, idFrais, idCodeCat);
+                int idSousCategorie = result.getInt(14);
+                int idSous_sous = result.getInt(15);
+                
+                Objet objet = new Objet(idObjet, titreA, descO, prixDepart, prixReserve, prixAchatImmediat, regiondelivraison,
+                        datedecloture, etatVente, prixAchat, fraisPort, idMembre, idFrais, idCodeCat, idSousCategorie, idSous_sous); 
+
                 objets.add(objet);
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            dbConnexionManager.closeObjects(connection, statement);
+            DbConnexionManager.closeObjects(connection, statement);
         }
         return objets;
+    }
+    
+    public ArrayList<Enchere> getEncheres(int idObjet){
+        ArrayList<Enchere> encheres = new ArrayList<Enchere>();
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = GestionVenteSQL.GETENCHERES;
+        try {
+            connection = DbConnexionManager.getConnection();
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, idObjet);
+            result = pstmt.executeQuery();
+            
+            while(result.next()){
+                int montantPasE = result.getInt(1);
+                int montantMaxE = result.getInt(2);
+                Date dateHeureEnchere = result.getDate(3);
+                int idMembre = result.getInt(4);
+                int idObjetGot = result.getInt(5);
+                Enchere enchere = new Enchere(montantPasE, montantMaxE, dateHeureEnchere, idMembre, idObjetGot);
+                encheres.add(enchere);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnexionManager.closeObjects(connection, pstmt);
+        }
+        return encheres;
+    }
+    
+    public String getNomPrenomMembre(int idMembre){
+        String prenomNom = null;
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = GestionVenteSQL.GETENCHERISSEUR;
+        try {
+            connection = DbConnexionManager.getConnection();
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, idMembre);
+            result = pstmt.executeQuery();
+            
+            while(result.next()){
+                String prenomM = result.getString(12);
+                String nomM = result.getString(11);
+                prenomNom = prenomM + " " + nomM;
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnexionManager.closeObjects(connection, pstmt);
+        }
+        return prenomNom;
     }
 }

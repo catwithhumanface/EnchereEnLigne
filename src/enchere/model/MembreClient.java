@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class MembreClient extends Membre {
     private int idMembre;
     private String pseudoMembre;
-    private String dateNM;
+    private Date dateNM;
     private String rueM;
     private String villeM;
     private String paysM;
@@ -22,9 +22,8 @@ public class MembreClient extends Membre {
     public MembreClient(){
         
     }
-    
-    public MembreClient(int idMembre, String pseudoMembre, String dateNM, String rueM, String villeM, String paysM, String etatM,
-            String numTel, String email, String nomM, String prenomM, String passeWordM){
+
+    public MembreClient(int idMembre, String pseudoMembre, Date dateNM, String rueM, String villeM, String paysM, String etatM, String numTel, String email, String nomM, String prenomM, String passeWordM) {
         this.idMembre = idMembre;
         this.pseudoMembre = pseudoMembre;
         this.dateNM = dateNM;
@@ -36,8 +35,9 @@ public class MembreClient extends Membre {
         this.email = email;
         this.nomM = nomM;
         this.prenomM = prenomM;
+        this.passeWordM = passeWordM;
     }
-
+    
     public int getIdMembre() {
         return idMembre;
     }
@@ -46,7 +46,7 @@ public class MembreClient extends Membre {
         return pseudoMembre;
     }
 
-    public String getDateNM() {
+    public Date getDateNM() {
         return dateNM;
     }
 
@@ -97,7 +97,7 @@ public class MembreClient extends Membre {
         
         String sql = MembreSQL.SIGN_UP;
         try {
-            connection = dbConnexionManager.getConnection();
+            connection = DbConnexionManager.getConnection();
             pstmt = connection.prepareStatement(sql);
             
             pstmt.setString(1, pseudo);
@@ -121,7 +121,7 @@ public class MembreClient extends Membre {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            dbConnexionManager.closeObjects(connection, pstmt);
+            DbConnexionManager.closeObjects(connection, pstmt);
         }
         return flag;
     }

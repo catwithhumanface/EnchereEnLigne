@@ -4,16 +4,26 @@
  */
 package enchere.vue;
 
+import enchere.model.Membre;
+import enchere.model.Objet;
+
 /**
  *
  * @author Tong
  */
 public class EncherirSurUnObjet extends javax.swing.JFrame {
-
+    private Objet objet;
+    private Membre membre;
     /**
      * Creates new form EncherirSurUnObjet
      */
     public EncherirSurUnObjet() {
+        initComponents();
+    }
+    
+    public EncherirSurUnObjet(Objet objet, Membre membre) {
+        this.objet = objet;
+        this.membre = membre;
         initComponents();
     }
 

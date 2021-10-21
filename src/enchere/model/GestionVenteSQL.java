@@ -27,6 +27,8 @@ public class GestionVenteSQL {
    
     final static String GetCATE = "select LibCat from Categorie";
     final static String GetSOUSSOUS = "select LibSous_sous from Sous_souscategorie";
-      
+    final static String GETLESOBJETS = "select * from Objet";
+    final static String GETENCHERES = "select * from Enchere where idObjet = ?";
+    final static String GETENCHERISSEUR = "select * from Membre where idMembre = ?";
   }   
   

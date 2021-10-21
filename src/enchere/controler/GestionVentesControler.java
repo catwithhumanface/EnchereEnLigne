@@ -1,5 +1,7 @@
 package enchere.controler;
 import enchere.model.Categorie;
+import enchere.model.Enchere;
+import enchere.model.MembreClient;
 import enchere.model.SousCategorie;
 import enchere.model.Sous_sousCate;
 import enchere.model.Objet;
@@ -14,8 +16,9 @@ public class GestionVentesControler {
     private Categorie categorie;
     private SousCategorie souscate;
     private Sous_sousCate sousSous;
-    private Objet objet;
     private RegionL region;
+    private Enchere enchere;
+    private MembreClient membreClient;
     
     public GestionVentesControler(){
         categorie = new Categorie();
@@ -23,6 +26,7 @@ public class GestionVentesControler {
         sousSous = new Sous_sousCate();
         objet = new Objet();
         region = new RegionL();
+        enchere = new Enchere();
     }
     
     public  ArrayList<String> getTypeRegion(){
@@ -57,4 +61,11 @@ public class GestionVentesControler {
         return objet.getLesObjets();
     }
                 
+    public ArrayList<Enchere> getEncheres(int idObjet){
+        return objet.getEncheres(idObjet);
+    }
+    
+    public String getNomPrenomMembre(int idMembre){
+        return objet.getNomPrenomMembre(idMembre);
+    }
 }
