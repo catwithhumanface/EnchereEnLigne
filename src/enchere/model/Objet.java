@@ -332,8 +332,11 @@ public class Objet {
             
             while(result.next()){
                 int montantPasE = result.getInt(1);
+                System.out.println("montantPasE : "+ montantPasE);
                 int montantMaxE = result.getInt(2);
+                System.out.println("montantMaxE : "+ montantMaxE);
                 Date dateHeureEnchere = result.getDate(3);
+                System.out.println("dateHeureEnchere : "+ dateHeureEnchere);
                 int idMembre = result.getInt(4);
                 int idObjetGot = result.getInt(5);
                 Enchere enchere = new Enchere(montantPasE, montantMaxE, dateHeureEnchere, idMembre, idObjetGot);

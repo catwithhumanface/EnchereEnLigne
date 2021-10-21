@@ -32,6 +32,7 @@ public class GestionVenteSQL {
     final static String GETENCHERISSEUR = "select * from Membre where idMembre = ?";
     final static String VALIDERENCHERIR = "insert into Enchere(MontantPasE,MontantMaxE,dateheureEnchere,idMembre,idObjet)"+
            "values(?,?,?,?,?)";
+    final static String UPDATEOBJET = "update Objet set PrixAchat=PrixAchat+? where idObjet=?";
       
   }   
   
