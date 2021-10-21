@@ -161,7 +161,7 @@ public class Objet {
         else if(prixDepart>0 && prixDepart<9.99){
              fraisInsertionObjet=frais.getListFraisInsertion().get(0);
         }
-        System.out.println("NUM  "+objet.getIdObjet()+"fraisInsertion"+fraisInsertionObjet+"prix dep"+prixDepart);
+       
         return fraisInsertionObjet;
 
     }
@@ -179,7 +179,7 @@ public class Objet {
         else if(prixAchat>0 && prixAchat<=50){
              fraisCommissionObjet=frais.getListFraisCommission().get(0);
         }
-       System.out.println("frais commission"+fraisCommissionObjet+prixAchat);
+      
         return fraisCommissionObjet*prixAchat;
     }
      //Cette méthode calcul le CA  sur un objet
