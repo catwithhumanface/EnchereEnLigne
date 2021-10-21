@@ -6,8 +6,11 @@ import enchere.model.Objet;
 import java.util.ArrayList;
 import enchere.model.RegionL;
 import java.sql.Date;
+import java.sql.Connection;
 
 public class GestionVentesControler {
+    private ArrayList<Objet> objets = new ArrayList<Objet>();
+    private Objet objet = new Objet();
     private Categorie categorie;
     private SousCategorie souscate;
     private Sous_sousCate sousSous;
@@ -44,8 +47,14 @@ public class GestionVentesControler {
     
     public void validerMisenVente(String TitreA,String DescO,int PrixDepart,int PrixReserver, 
             int PrixAchatimmediat,String Regiondelivraison, Date Datedecloture, 
-            int FraisPort,String Cate,String souscate,String Sous_sous)
-    {
+            int FraisPort,String Cate,String souscate,String Sous_sous){
         objet.misenVente(TitreA, DescO, PrixDepart, PrixReserver, PrixAchatimmediat, Regiondelivraison, Datedecloture, 
-                FraisPort, Cate, souscate,Sous_sous);}
+                FraisPort, Cate, souscate,Sous_sous);
+     }
+     
+     
+    public ArrayList<Objet> getLesObjets() {
+        return objet.getLesObjets();
+    }
+                
 }
