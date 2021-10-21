@@ -34,8 +34,11 @@ public class Categorie {
         try {
 
             connection = DbConnexionManager.getConnection();
+            
             statement = connection.createStatement();
+            
             rs = statement.executeQuery(GestionVenteSQL.GetCATE);
+            
             while (rs.next()) {
                 String cateAjout = rs.getString("LibCat");
                 result.add(cateAjout);

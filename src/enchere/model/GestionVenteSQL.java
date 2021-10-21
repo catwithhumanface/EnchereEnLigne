@@ -23,8 +23,8 @@ public class GestionVenteSQL {
     final static String REGION ="select regionL from Region";
     final static String MISENVENTE = "insert into Objet(TitreA,DescO,PrixDepart,PrixReserve,"+ 
            "Prixachatimmediat,Regiondelivraison,Datedecloture,EtatVente,PrixAchat,idMembre,FraisPort,IdCodeCat,IdSousCategorie,IdSous_sous)"+
-           "values(?,?,?,?,?,?,?,'En Vente',?,1,?,?,?,?)";
-   
+           "values(?,?,?,?,?,?,?,'En Vente',?,?,?,?,?,?)";
+    final static String GETIDMEMBRE = "select idMembre from membre Where PseudoMembre = ?";
     final static String GetCATE = "select LibCat from Categorie";
     final static String GetSOUSSOUS = "select LibSous_sous from Sous_souscategorie";
     final static String GETLESOBJETS = "select * from Objet";
