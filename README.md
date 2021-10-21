@@ -43,26 +43,57 @@ MySQL<br>
 
 ![ConsulterMesParticipations](img/ConsulterMesParticipations.gif)
 <br>
-&nbsp; ; **Connexion**, **Consulter les enchères en cours**, **Enchérir sur un objet**, **Consulter mes participations**
+&nbsp; **Connexion**, **Consulter les enchères en cours**, **Enchérir sur un objet**, **Consulter mes participations**
 
 ---
 
 
 ![ConnexionServiceClient](img/ConnexionServiceClient.gif)
 <br>
-&nbsp; ; **Connexion**, **Consulter les enchères en cours**, **Consulter les statistiques**
+&nbsp; **Connexion**, **Consulter les enchères en cours**, **Consulter les statistiques**
 
 ---
 
 ![InscriptionClient](img/InscriptionClient.gif)
 <br>
-&nbsp; ; **Inscription*
+&nbsp; **Inscription*
 
 
 ### *Gestion des Ventes*
 ![EncherirClient](img/EncherirClient.gif)
 <br>
-&nbsp; L'importation de API de **OpenStreetMap** permet de savoir où se trouve les chenils. Grâce aux bulle d'infos en **javascript**, les utilisateurs peuvent également savoir le nom de chenils lié. L'entrepôt de donnés possédent les chenils existant dans la région toulousaine. Selon les chenils, les informations sur le site ou leur contact sont mise à dispositin.<br><br>
+&nbsp; **EncherirClient*
+
+---
+
+![MiseEnVenteMembre](img/MiseEnVente.gif)
+<br>
+&nbsp; **MiseEnVenteMembre*
+
+---
+
+![MiseEnVenteMembrePlus](img/MiseEnVenteMembrePlus.gif)
+<br>
+&nbsp; **MiseEnVenteMembrePlus*
+
+---
+
+### *Gestion des Statistiques*
+![ConsultationStats](img/ConsultationStats.gif)
+<br>
+&nbsp; **ConsultationStats*
+
+---
+
+
+
+
+
+
+
+
+
+L'importation de API de **OpenStreetMap** permet de savoir où se trouve les chenils. Grâce aux bulle d'infos en **javascript**, les utilisateurs peuvent également savoir le nom de chenils lié. L'entrepôt de donnés possédent les chenils existant dans la région toulousaine. Selon les chenils, les informations sur le site ou leur contact sont mise à dispositin.<br><br>
 
 1. L'image de chenils<br>
 2. L'adresse locale du chenils<br>
