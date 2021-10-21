@@ -331,7 +331,12 @@ public class ConsulterEncheres extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAccueilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAccueilActionPerformed
-        Index index = new Index();
+        Index index;
+        if(this.membre!=null){
+            index = new Index(this.membre);
+        }else{
+            index = new Index();
+        }
         index.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonAccueilActionPerformed
@@ -354,9 +359,15 @@ public class ConsulterEncheres extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ObjetDetail objetDetail;
         if(jButtonVisible.get(1)){
             Objet objet = objets.get(1);
-            ObjetDetail objetDetail = new ObjetDetail(objet);
+            if(this.membre!=null){
+                objetDetail = new ObjetDetail(objet, this.membre);
+            }else{
+                objetDetail = new ObjetDetail(objet);
+            }
+            
             int visiteObjet = objet.getVisiteObjet();
             objet.setVisiteObjet(visiteObjet+1);
             objetDetail.setVisible(true);
@@ -365,10 +376,15 @@ public class ConsulterEncheres extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        ObjetDetail objetDetail;
         if(jButtonVisible.get(2)){
             Objet objet = objets.get(2);
-            ObjetDetail objetDetail = new ObjetDetail(objet);
+            if(this.membre!=null){
+                objetDetail = new ObjetDetail(objet, this.membre);
+            }else{
+                objetDetail = new ObjetDetail(objet);
+            }
+            
             int visiteObjet = objet.getVisiteObjet();
             objet.setVisiteObjet(visiteObjet+1);
             objetDetail.setVisible(true);
@@ -377,10 +393,16 @@ public class ConsulterEncheres extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+ 
+        ObjetDetail objetDetail;
         if(jButtonVisible.get(3)){
             Objet objet = objets.get(3);
-            ObjetDetail objetDetail = new ObjetDetail(objet);
+            if(this.membre!=null){
+                objetDetail = new ObjetDetail(objet, this.membre);
+            }else{
+                objetDetail = new ObjetDetail(objet);
+            }
+            
             int visiteObjet = objet.getVisiteObjet();
             objet.setVisiteObjet(visiteObjet+1);
             objetDetail.setVisible(true);
@@ -389,10 +411,15 @@ public class ConsulterEncheres extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        ObjetDetail objetDetail;
         if(jButtonVisible.get(4)){
             Objet objet = objets.get(4);
-            ObjetDetail objetDetail = new ObjetDetail(objet);
+            if(this.membre!=null){
+                objetDetail = new ObjetDetail(objet, this.membre);
+            }else{
+                objetDetail = new ObjetDetail(objet);
+            }
+           
             int visiteObjet = objet.getVisiteObjet();
             objet.setVisiteObjet(visiteObjet+1);
             objetDetail.setVisible(true);
@@ -402,9 +429,15 @@ public class ConsulterEncheres extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        ObjetDetail objetDetail;
         if(jButtonVisible.get(5)){
             Objet objet = objets.get(5);
-            ObjetDetail objetDetail = new ObjetDetail(objet);
+            if(this.membre!=null){
+                objetDetail = new ObjetDetail(objet, this.membre);
+            }else{
+                objetDetail = new ObjetDetail(objet);
+            }
+            
             int visiteObjet = objet.getVisiteObjet();
             objet.setVisiteObjet(visiteObjet+1);
             objetDetail.setVisible(true);
