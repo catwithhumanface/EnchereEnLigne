@@ -36,7 +36,6 @@ public class Frais {
         } finally {
             DbConnexionManager.closeObjects(connection, statement);
         }
-       
         return listFraisInsertion;
 
     }
@@ -59,7 +58,6 @@ public class Frais {
         } finally {
             DbConnexionManager.closeObjects(connection, statement);
         }
-        System.out.println("liste frais"+listFraisCommission);
         return listFraisCommission;
         
 
