@@ -1,3 +1,4 @@
+
 drop table if exists Enchere;
 drop table if exists Choisir;
 drop table if exists Commenter;
@@ -15,6 +16,7 @@ drop table if exists FraisCommission;
 drop table if exists FraisInsertion ;
 drop table if exists Region;
 
+
 CREATE TABLE Membre
 (
     idMembre INT PRIMARY KEY AUTO_INCREMENT,
@@ -30,6 +32,7 @@ CREATE TABLE Membre
     NomM VARCHAR(255),
     PrenomM VARCHAR(255),
     PasseWordM VARCHAR(255) 
+
 );
 
 
@@ -38,11 +41,15 @@ CREATE TABLE Membre
 CREATE TABLE FraisInsertion
 (
 	FraisInsertion float PRIMARY KEY 
+
 );
 
 CREATE TABLE FraisCommission
 (
+
     FraisCommission  float PRIMARY KEY
+
+
 );
 
 
@@ -102,7 +109,8 @@ CREATE TABLE Objet
 	Datedecloture DATE,
 	EtatVente VARCHAR(255),
 	PrixAchat INT,
-    	FraisPort int,
+  FraisPort int,
+
 	idMembre INT,
 	IdCodeCat INT,
     IdSousCategorie INT,
@@ -233,6 +241,7 @@ insert into SousCategorie (LibSousCat,idCodeCat) VALUES ( 'Lavage', 2);
 insert into SousCategorie (LibSousCat,idCodeCat) VALUES ( 'Froid', 2);
 
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (1, 'Téléviseur4/3');
+
 INSERT INTO fraisInsertion values(0.1);
 INSERT INTO fraisInsertion values (0.2);
 INSERT INTO fraisInsertion values(0.4);
@@ -243,11 +252,10 @@ INSERT INTO fraisCommission values(0.03);
 INSERT INTO fraisCommission values(0.015);
 
 
-
-
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (1, 'Téléviseur16/9');
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (3, 'Lave linge');
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (3, 'Sèche linge');
+
 
 Create Table Region ( 
     regionL VARCHAR(256),
