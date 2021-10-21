@@ -25,7 +25,9 @@ public class statsVue extends javax.swing.JFrame {
         initComponents();
         
         statControler=new GestionStatsControler();
-        afficherLibelleCategorie();
+        statCategorie();
+        afficherSemaine();
+        statControler.insererStat();
         
     }
    
@@ -40,15 +42,17 @@ public class statsVue extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        statTest = new java.awt.Label();
+        semaine = new java.awt.Label();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        label1 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setText("Suivi des statistiques");
 
-        statTest.setText("label1");
+        semaine.setText("label1");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -63,33 +67,37 @@ public class statsVue extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        label1.setText("Semaine");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(409, 409, 409)
-                        .addComponent(jLabel1))
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(semaine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(263, 263, 263)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(statTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(412, Short.MAX_VALUE))
+                        .addGap(184, 184, 184)
+                        .addComponent(jLabel1)))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(4, 4, 4)
-                .addComponent(statTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(408, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(semaine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,32 +106,41 @@ public class statsVue extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
-    //Cette méthode ajoute dans la table statistiques toutes les catégories de la BDD
-     public void afficherLibelleCategorie() throws ClassNotFoundException{
+    //Cette méthode affiche la semaine du jour
+    public void afficherSemaine() throws ClassNotFoundException{
+       
+        semaine.setText( statControler.afficherSemaine());
+    }
+    //Cette méthode ajoute dans la table statistiques toutes les satistiques sur une catégorie donnée
+     public void statCategorie() throws ClassNotFoundException{
         
-        // create object of table and table model
+        // Creation table statistiques
         JTable statistiques = new JTable();
         DefaultTableModel dtm = new DefaultTableModel(0, 0);
 
-       // add header of the table
+       // En-tête de la table
        String header[] = new String[] { "Catégorie", "Chiffre d'affaires", "Nombre de visites",
-                   "Nombre d'objets"};
+                   "Nombre d'objets","Total"};
 
        // add header in table model     
         dtm.setColumnIdentifiers(header);
-           //set model into the table object
-              statistiques.setModel(dtm);
+       //set model into the table object
+        statistiques.setModel(dtm);
 
-        // add row dynamically into the table  
-       String libelle="";
+        // aajout dynamique des lignes de chaque table 
+       String libelleCategorie="";
        int nbObjets=0;
        float CA;
+       int nbVisites=0;
+       int total=0;
+       
        for (int ligneTable=0; ligneTable<statControler.getMyLibCategories().size();ligneTable++) {
-           libelle=statControler.getMyLibCategories().get(ligneTable);
-           nbObjets=statControler.getNbObjets(libelle);
-           CA=statControler.getCACategorie(libelle);
-           dtm.addRow( new Object[] {libelle,CA,nbObjets});
+           libelleCategorie=statControler.getMyLibCategories().get(ligneTable);
+           nbObjets=statControler.getNbObjets(libelleCategorie);
+           CA=statControler.getCACategorie(libelleCategorie);
+           nbVisites=statControler.getNbVisiteCategorie(libelleCategorie);
+           //Ajout des lignes
+           dtm.addRow( new Object[] {libelleCategorie,CA,nbVisites,nbObjets});
            //statistiques.setValueAt(libelle,ligneTable, 0);
           
 
@@ -173,7 +190,8 @@ public class statsVue extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private java.awt.Label statTest;
+    private java.awt.Label label1;
+    private java.awt.Label semaine;
     // End of variables declaration//GEN-END:variables
 
 

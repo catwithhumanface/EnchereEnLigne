@@ -1,4 +1,3 @@
-
 drop table if exists Enchere;
 drop table if exists Choisir;
 drop table if exists Commenter;
@@ -16,7 +15,6 @@ drop table if exists FraisCommission;
 drop table if exists FraisInsertion ;
 drop table if exists Region;
 
-
 CREATE TABLE Membre
 (
     idMembre INT PRIMARY KEY AUTO_INCREMENT,
@@ -32,7 +30,6 @@ CREATE TABLE Membre
     NomM VARCHAR(255),
     PrenomM VARCHAR(255),
     PasseWordM VARCHAR(255) 
-
 );
 
 
@@ -41,15 +38,11 @@ CREATE TABLE Membre
 CREATE TABLE FraisInsertion
 (
 	FraisInsertion float PRIMARY KEY 
-
 );
 
 CREATE TABLE FraisCommission
 (
-
     FraisCommission  float PRIMARY KEY
-
-
 );
 
 
@@ -106,11 +99,10 @@ CREATE TABLE Objet
 	PrixReserve INT,
 	Prixachatimmediat INT,
 	Regiondelivraison VARCHAR(255),
-	Datedecloture DATE,
+	Datedecloture DATETIME,
 	EtatVente VARCHAR(255),
 	PrixAchat INT,
-  FraisPort int,
-
+    	FraisPort int,
 	idMembre INT,
 	IdCodeCat INT,
     IdSousCategorie INT,
@@ -128,14 +120,12 @@ CREATE TABLE Objet
 CREATE TABLE Statistique
 (
 	AnneeSemaine VARCHAR(255),
-	CA_Total INT,
+	CA_Total float,
 	Vis_Total INT,
 	NbObjet INT,
 	
-    IdCodeCat INT,
-	FOREIGN KEY (IdCodeCat) REFERENCES Categorie (IdCodeCat),
 	
-	PRIMARY KEY(AnneeSemaine,IdCodeCat)
+	PRIMARY KEY(AnneeSemaine)
 
 
 );
@@ -168,7 +158,7 @@ CREATE TABLE Choisir(
 CREATE TABLE Enchere (
 	MontantPasE INT,
 	MontantMaxE INT,
-	dateheureEnchere Date,
+	dateheureEnchere DATETIME,
 
 	idMembre INT,
 	idObjet INT,
@@ -241,21 +231,23 @@ insert into SousCategorie (LibSousCat,idCodeCat) VALUES ( 'Lavage', 2);
 insert into SousCategorie (LibSousCat,idCodeCat) VALUES ( 'Froid', 2);
 
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (1, 'Téléviseur4/3');
+INSERT INTO FraisInsertion values(0.1);
+INSERT INTO FraisInsertion values(0.2);
+INSERT INTO FraisInsertion values(0.4);
+INSERT INTO FraisInsertion values(1.0);
 
-INSERT INTO fraisInsertion values(0.1);
-INSERT INTO fraisInsertion values (0.2);
-INSERT INTO fraisInsertion values(0.4);
-INSERT INTO fraisInsertion values(1.0);
+INSERT INTO FraisCommission values(0.05);
+INSERT INTO FraisCommission values(0.03);
+INSERT INTO FraisCommission values(0.015);
 
-INSERT INTO fraisCommission values(0.05);
-INSERT INTO fraisCommission values(0.03);
-INSERT INTO fraisCommission values(0.015);
+
+
+
 
 
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (1, 'Téléviseur16/9');
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (3, 'Lave linge');
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (3, 'Sèche linge');
-
 
 Create Table Region ( 
     regionL VARCHAR(256),
@@ -276,5 +268,11 @@ insert into Objet (TitreA, DescO, PrixDepart, PrixReserve, Prixachatimmediat, Re
 
 
 
+insert into Enchere values(200, 400, TIMESTAMP(NOW()), 1, 1);
 
+
+
+insert into Objet (TitreA, DescO, PrixDepart, PrixReserve, Prixachatimmediat, Regiondelivraison, EtatVente, PrixAchat, FraisPort, idMembre, IdCodeCat, IdSousCategorie, IdSous_sous, Datedecloture) values("titre1", "desc", 100, 100, 300, "toulouse", "en cours", 0, 0, 1, 1, 1,1, TIMESTAMP(now()));
+INSERT INTO objet values(
+'7', 'Camion', 'desc', '100', '100', '300', 'toulouse', '2020-11-09', 'en cours', '50', '50', '1', '3', '1', '1');
 

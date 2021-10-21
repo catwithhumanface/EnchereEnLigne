@@ -21,7 +21,7 @@ public class Membre {
         Statement statement = null;
         ResultSet result = null;
         try {
-            connection = dbConnexionManager.getConnection();
+            connection = DbConnexionManager.getConnection();
             statement = connection.createStatement();
             result = statement.executeQuery("Select * from TypeMembre");
             while(result.next()){
@@ -30,7 +30,7 @@ public class Membre {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            dbConnexionManager.closeObjects(connection, statement);
+            DbConnexionManager.closeObjects(connection, statement);
         }
         return typeMembre;
     }
@@ -44,7 +44,7 @@ public class Membre {
         
         String sql = MembreSQL.CHECKPSEUDO;
         try {
-            connection = dbConnexionManager.getConnection();
+            connection = DbConnexionManager.getConnection();
             pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, pseudo);
             
@@ -55,7 +55,7 @@ public class Membre {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            dbConnexionManager.closeObjects(connection, pstmt);
+            DbConnexionManager.closeObjects(connection, pstmt);
         }
         return flag;
     }
@@ -69,7 +69,7 @@ public class Membre {
         
         String sql = MembreSQL.SIGN_IN;
         try {
-            connection = dbConnexionManager.getConnection();
+            connection = DbConnexionManager.getConnection();
             pstmt = connection.prepareStatement(sql);
             pstmt.setInt(1, type);
             pstmt.setString(2, pseudo);
@@ -98,7 +98,7 @@ public class Membre {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            dbConnexionManager.closeObjects(connection, pstmt);
+            DbConnexionManager.closeObjects(connection, pstmt);
         }
         return membre;
     }

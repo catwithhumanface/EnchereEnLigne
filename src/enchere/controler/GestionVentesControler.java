@@ -14,7 +14,6 @@ public class GestionVentesControler {
     private Categorie categorie;
     private SousCategorie souscate;
     private Sous_sousCate sousSous;
-    private Objet objet;
     private RegionL region;
     
     public GestionVentesControler(){

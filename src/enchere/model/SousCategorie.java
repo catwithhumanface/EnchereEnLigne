@@ -16,7 +16,7 @@ public class SousCategorie {
         PreparedStatement pstmt = null;
        
         try {    
-            connection = dbConnexionManager.getConnection();
+            connection = DbConnexionManager.getConnection();
             pstmt= connection.prepareStatement(GestionVenteSQL.GETSOUSCAT);
             pstmt.setString(1, cateChoix);
             
@@ -29,7 +29,7 @@ public class SousCategorie {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            dbConnexionManager.closeObjects(connection, pstmt);
+            DbConnexionManager.closeObjects(connection, pstmt);
         }
         return result;
     }

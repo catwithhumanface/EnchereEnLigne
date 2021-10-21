@@ -97,7 +97,7 @@ public class MembreClient extends Membre {
         
         String sql = MembreSQL.SIGN_UP;
         try {
-            connection = dbConnexionManager.getConnection();
+            connection = DbConnexionManager.getConnection();
             pstmt = connection.prepareStatement(sql);
             
             pstmt.setString(1, pseudo);
@@ -121,7 +121,7 @@ public class MembreClient extends Membre {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            dbConnexionManager.closeObjects(connection, pstmt);
+            DbConnexionManager.closeObjects(connection, pstmt);
         }
         return flag;
     }

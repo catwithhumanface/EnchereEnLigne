@@ -9,8 +9,18 @@ import java.util.Iterator;
 public class Categorie {
     private int id;
     private String libCategorie;
-    private CategorieService cs;
     private ArrayList<Objet> listObjets;
+    
+    public Categorie(){
+        
+    }
+    
+    Categorie(int id, String libelle) {
+       this.id=id;
+       this.libCategorie=libelle;
+       listObjets=new ArrayList<>();
+    }
+    
     
     // Afficher les catégorie dans la page mise en vente
     public ArrayList<String> getTypeCategorie() {
@@ -21,7 +31,7 @@ public class Categorie {
 
         try {
 
-            connection = dbConnexionManager.getConnection();
+            connection = DbConnexionManager.getConnection();
             statement = connection.createStatement();
             rs = statement.executeQuery(GestionVenteSQL.GetCATE);
             while (rs.next()) {
@@ -32,7 +42,7 @@ public class Categorie {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            dbConnexionManager.closeObjects(connection, statement);
+            DbConnexionManager.closeObjects(connection, statement);
         }
         return result;
 
