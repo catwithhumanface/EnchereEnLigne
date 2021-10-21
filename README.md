@@ -1,14 +1,14 @@
 
 # ABOUT PROJECT
-#### [ Enchères en Ligne ] Développement d'une application en Java : Application des enchères en ligne (Inscription, Connexion, Gestion des membres, Gestion des ventes, Gestion des statistiques <br><span style="font-size:15px">*( 2020.09.16 ~ 2020.12.02 )*</span>
+#### [ Enchères en Ligne ] Développement d'une application en Java : Application des enchères en ligne (Inscription, Connexion, Gestion des membres, Gestion des ventes, Gestion des statistiques <br><span style="font-size:15px">*( 2021.10.14 ~ 2021.10.21 )*</span>
 
 ## 1. Membres de l'équipe
 
 |*Members*|*Contact*|
 |:---:|---|
 |**Joohyun ANN**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](http://github.com/catwithhumanface) [![Gmail Badge](https://img.shields.io/badge/-annjh11@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:annjh11@gmail.com)](mailto:annjh11@gmail.com)|
-|**Tong LIU**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/MaimounaBah) [![Gmail Badge](https://img.shields.io/badge/-maimounab537@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:maimounab537@gmail.com)](mailto:maimounab537@gmail.com)|
-|**Annie DAGO**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/) [![Gmail Badge](https://img.shields.io/badge/-cailler.dylan@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:cailler.dylan@gmail.com)](mailto:cailler.dylan@gmail.com)|
+|**Tong LIU**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/Gabrielle07) [![Gmail Badge](https://img.shields.io/badge/-maimounab537@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tong.liu@ut-capitole.fr)](mailto:tong.liu@ut-capitole.fr)|
+|**Annie DAGO**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/Annie-create) [![Gmail Badge](https://img.shields.io/badge/-cailler.dylan@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:annie.dago@ut-capitole.fr)](mailto:annie.dago@ut-capitole.fr)|
 
 ## 2. Installation du projet
 1. Copier Code Github 
