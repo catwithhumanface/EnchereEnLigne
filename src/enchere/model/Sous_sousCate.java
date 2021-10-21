@@ -19,7 +19,7 @@ public class Sous_sousCate {
         PreparedStatement pstmt = null;
        
         try {    
-            connection = dbConnexionManager.getConnection();
+            connection = DbConnexionManager.getConnection();
             pstmt= connection.prepareStatement(GestionVenteSQL.GETSOUS_SOUS);
             pstmt.setString(1, souscateChoix);
             
@@ -32,7 +32,7 @@ public class Sous_sousCate {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            dbConnexionManager.closeObjects(connection, pstmt);
+            DbConnexionManager.closeObjects(connection, pstmt);
         }
         return result;
     }

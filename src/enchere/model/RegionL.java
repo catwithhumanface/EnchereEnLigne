@@ -24,7 +24,7 @@ public class RegionL {
        
         try {
             
-            connection = dbConnexionManager.getConnection();
+            connection = DbConnexionManager.getConnection();
             statement = connection.createStatement();
             rs = statement.executeQuery(GestionVenteSQL.REGION);
             while(rs.next()){
@@ -35,7 +35,7 @@ public class RegionL {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            dbConnexionManager.closeObjects(connection, statement);
+            DbConnexionManager.closeObjects(connection, statement);
         }
         return result;
     }

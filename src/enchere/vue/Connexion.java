@@ -41,13 +41,13 @@ public class Connexion extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jTextFieldPseudo = new javax.swing.JTextField();
-        jTextFieldMdp = new javax.swing.JTextField();
         jButtonSeConnecter = new javax.swing.JButton();
         jButtonAccueil = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jComboBoxTypeConnexion = new javax.swing.JComboBox<>();
+        motdepasse = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,12 +56,6 @@ public class Connexion extends javax.swing.JFrame {
         jTextFieldPseudo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPseudoActionPerformed(evt);
-            }
-        });
-
-        jTextFieldMdp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldMdpActionPerformed(evt);
             }
         });
 
@@ -85,6 +79,8 @@ public class Connexion extends javax.swing.JFrame {
 
         jLabel3.setText("Type Connexion");
 
+        motdepasse.setText("jPasswordField1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -95,11 +91,11 @@ public class Connexion extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldPseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextFieldPseudo, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
                     .addComponent(jComboBoxTypeConnexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(motdepasse))
                 .addGap(102, 102, 102))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -126,9 +122,9 @@ public class Connexion extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(motdepasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jButtonSeConnecter)
                 .addGap(54, 54, 54))
         );
@@ -157,14 +153,10 @@ public class Connexion extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonAccueilActionPerformed
 
-    private void jTextFieldMdpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMdpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldMdpActionPerformed
-
     private void jButtonSeConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeConnecterActionPerformed
 
-        if(gestionMembreControler.getLoginMembre(jTextFieldPseudo.getText(), jTextFieldMdp.getText(), String.valueOf(jComboBoxTypeConnexion.getSelectedItem()))!=null){
-            Index index = new Index(gestionMembreControler.getLoginMembre(jTextFieldPseudo.getText(), jTextFieldMdp.getText(), String.valueOf(jComboBoxTypeConnexion.getSelectedItem())));
+        if(gestionMembreControler.getLoginMembre(jTextFieldPseudo.getText(), String.valueOf(motdepasse.getPassword()), String.valueOf(jComboBoxTypeConnexion.getSelectedItem()))!=null){
+            Index index = new Index(gestionMembreControler.getLoginMembre(jTextFieldPseudo.getText(), String.valueOf(motdepasse.getPassword()),  String.valueOf(jComboBoxTypeConnexion.getSelectedItem())));
             index.setVisible(true);
             this.dispose();
         }else{
@@ -216,7 +208,7 @@ public class Connexion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextFieldMdp;
     private javax.swing.JTextField jTextFieldPseudo;
+    private javax.swing.JPasswordField motdepasse;
     // End of variables declaration//GEN-END:variables
 }
