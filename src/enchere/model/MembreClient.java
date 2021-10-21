@@ -3,7 +3,9 @@ package enchere.model;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MembreClient extends Membre {
     private int idMembre;
@@ -126,6 +128,76 @@ public class MembreClient extends Membre {
         return flag;
     }
     
+    public ArrayList<Objet> getMesVentes(int id){
+        ArrayList<Objet> objets = new ArrayList<Objet>();
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = MembreSQL.GETMESVENTES;
+        try {
+            connection = DbConnexionManager.getConnection();
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, id);
+            result = pstmt.executeQuery();
+            
+            while(result.next()){
+                int idObjet = result.getInt(1);
+                String titreA = result.getString(2);
+                String descO = result.getString(3);
+                int prixDepart = result.getInt(4);
+                int prixReserve = result.getInt(5);
+                int prixAchatImmediat = result.getInt(6);
+                String regiondelivraison = result.getString(7);
+                Date datedecloture = result.getDate(8);
+                String etatVente = result.getString(9);
+                int prixAchat = result.getInt(10);
+                int idMembre = result.getInt(11);
+                int idFrais = result.getInt(12);
+                int idCodeCat = result.getInt(13);
+                int idSousCategorie = result.getInt(14);
+                int idSous_sous = result.getInt(15);
+                
+                Objet objet = new Objet(idObjet, titreA, descO, prixDepart, prixReserve, prixAchatImmediat, regiondelivraison,
+                        datedecloture, etatVente, prixAchat, 0, idMembre, idFrais, idCodeCat, idSousCategorie, idSous_sous); 
+
+                objets.add(objet);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnexionManager.closeObjects(connection, pstmt);
+        }
+        return objets;
+    }
+    
+    public ArrayList<Enchere> getMesEncheres(int id){
+        ArrayList<Enchere> encheres = new ArrayList<Enchere>();
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = MembreSQL.GETMESENCHERES;
+        try {
+            connection = DbConnexionManager.getConnection();
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, id);
+            result = pstmt.executeQuery();
+            
+            while(result.next()){
+                int montantPasE = result.getInt(1);
+                int montantMaxE = result.getInt(2);
+                Date dateHeureEnchere = result.getDate(3);
+                int idMembre = result.getInt(4);
+                int idObjetGot = result.getInt(5);
+                Enchere enchere = new Enchere(montantPasE, montantMaxE, dateHeureEnchere, idMembre, idObjetGot);
+                encheres.add(enchere);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnexionManager.closeObjects(connection, pstmt);
+        }
+        return encheres;
+    }
     
     
 }

@@ -28,18 +28,25 @@ public class Index extends javax.swing.JFrame {
         membreControler = new GestionMembresControler();
         jButtonStats.setVisible(false);
         jButtonMisEnVente.setVisible(false);
+        jButtonConsulterMesParticipations.setVisible(false);
     }
     
     public Index(Membre membre){
         initComponents();
         jButtonConnexion.setVisible(false);
         jButtonSinscrire.setVisible(false);
+        jButtonMisEnVente.setVisible(false);
         this.membre = membre;
         jButtonStats.setVisible(false);
+        jButtonConsulterMesParticipations.setVisible(false);
         if(this.membre instanceof MembreServiceCommercial){
-            System.out.println("membreservicecommercil");
             jButtonStats.setVisible(true);
+        }else if(this.membre instanceof MembreClient){
+            jButtonConsulterMesParticipations.setVisible(true);
+            jButtonMisEnVente.setVisible(true);
         }
+        
+        
     }
    
 
@@ -59,6 +66,7 @@ public class Index extends javax.swing.JFrame {
         jButtonConsulteEncheres = new javax.swing.JButton();
         jButtonStats = new javax.swing.JButton();
         jButtonMisEnVente = new javax.swing.JButton();
+        jButtonConsulterMesParticipations = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -110,6 +118,13 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jButtonConsulterMesParticipations.setText("Consulter mes participations aux encheres");
+        jButtonConsulterMesParticipations.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsulterMesParticipationsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelAccueilLayout = new javax.swing.GroupLayout(jPanelAccueil);
         jPanelAccueil.setLayout(jPanelAccueilLayout);
         jPanelAccueilLayout.setHorizontalGroup(
@@ -129,9 +144,14 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(jButtonStats))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanelAccueilLayout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(jButtonConsulteEncheres)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addGroup(jPanelAccueilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAccueilLayout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jButtonConsulteEncheres))
+                    .addGroup(jPanelAccueilLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(jButtonConsulterMesParticipations)))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanelAccueilLayout.setVerticalGroup(
             jPanelAccueilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,13 +160,15 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jButtonConnexion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonSinscrire)
-                .addGap(64, 64, 64)
+                .addGap(29, 29, 29)
+                .addComponent(jButtonConsulterMesParticipations)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonConsulteEncheres)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonMisEnVente)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonStats)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,6 +222,13 @@ public class Index extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonMisEnVenteActionPerformed
 
+    private void jButtonConsulterMesParticipationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsulterMesParticipationsActionPerformed
+        // TODO add your handling code here:
+        ConsulterMesEncheres consulterMesEncheres = new ConsulterMesEncheres((MembreClient)this.membre);
+        consulterMesEncheres.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonConsulterMesParticipationsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -239,6 +268,7 @@ public class Index extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConnexion;
     private javax.swing.JButton jButtonConsulteEncheres;
+    private javax.swing.JButton jButtonConsulterMesParticipations;
     private javax.swing.JButton jButtonMisEnVente;
     private javax.swing.JButton jButtonSinscrire;
     private javax.swing.JButton jButtonStats;

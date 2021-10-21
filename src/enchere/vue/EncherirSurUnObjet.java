@@ -314,14 +314,7 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
            
-        // Vérifier le passe word 
-        if(gestionMembreControler.getLoginMembre(pseudo.getText(),String.valueOf(motdepasse.getPassword()),"Client")!=null){
-            Index index = new Index(gestionMembreControler.getLoginMembre(pseudo.getText(), String.valueOf(motdepasse.getPassword()),"Client"));
-            index.setVisible(true);
-            this.dispose();
-        }else{
-            JOptionPane.showMessageDialog(null, "Mot de passe ou identifiant n'est pas correcte ");
-        }
+        
         
         // Envoyer les données de l'enchère
         String montantMax = MontantMaxE.getText();
@@ -338,8 +331,9 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
         }
         
         Timestamp nowTime = new Timestamp(new Date().getTime());
-        
-        if(gestionVenteControler.validerEnchere(montantMaxsql,montantPassql, this.objet.getIdObjet(), this.membre.getIdMembre() ,nowTime)){
+        // Vérifier le passe word 
+        if(gestionMembreControler.getLoginMembre(pseudo.getText(),String.valueOf(motdepasse.getPassword()),"Client")!=null){
+            if(gestionVenteControler.validerEnchere(montantMaxsql,montantPassql, this.objet.getIdObjet(), this.membre.getIdMembre() ,nowTime)){
             JOptionPane.showMessageDialog(null, "Votre enchère a bien été pris en compte");
             ConsulterEncheres consulterEncheres = new ConsulterEncheres(this.membre);
             consulterEncheres.setVisible(true);
@@ -347,6 +341,10 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Veuillez bien mettre votre identifiant et le mot de passe");
         }
+        }else{
+            JOptionPane.showMessageDialog(null, "Mot de passe ou identifiant n'est pas correcte ");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void pseudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pseudoActionPerformed
