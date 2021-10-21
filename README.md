@@ -1,43 +1,45 @@
 
 # ABOUT PROJECT
-#### [ PetCare ] Développement Site Web : Recherche de chenils pour chien, Communication avec les gardiens particuliers, Déclaration de perte de chiens <br><span style="font-size:15px">*( 2020.09.16 ~ 2020.12.02 )*</span>
+#### [ Enchères en Ligne ] Développement d'une application en Java : Application des enchères en ligne (Inscription, Connexion, Gestion des membres, Gestion des ventes, Gestion des statistiques <br><span style="font-size:15px">*( 2020.09.16 ~ 2020.12.02 )*</span>
 
 ## 1. Membres de l'équipe
 
 |*Members*|*Contact*|
 |:---:|---|
 |**Joohyun ANN**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](http://github.com/catwithhumanface) [![Gmail Badge](https://img.shields.io/badge/-annjh11@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:annjh11@gmail.com)](mailto:annjh11@gmail.com)|
-|**Maimouna Bah**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/MaimounaBah) [![Gmail Badge](https://img.shields.io/badge/-maimounab537@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:maimounab537@gmail.com)](mailto:maimounab537@gmail.com)|
-|**Cailler Dylan**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/) [![Gmail Badge](https://img.shields.io/badge/-cailler.dylan@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:cailler.dylan@gmail.com)](mailto:cailler.dylan@gmail.com)|
+|**Tong LIU**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/MaimounaBah) [![Gmail Badge](https://img.shields.io/badge/-maimounab537@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:maimounab537@gmail.com)](mailto:maimounab537@gmail.com)|
+|**Annie DAGO**|[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/) [![Gmail Badge](https://img.shields.io/badge/-cailler.dylan@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:cailler.dylan@gmail.com)](mailto:cailler.dylan@gmail.com)|
 
 ## 2. Installation du projet
 1. Copier Code Github 
-2. Connexion WampServer 
-3. Import Projet
-4. Connexion DB to Phpmyadmin
-   1. Exécution SQL (db/petcare.sql)
+2. Import Projet
+3. Connexion DB to MySQL
+   1. Exécution SQL (DB.sql)
    2. Adapation de connexionBD.php
       1. dbname
       2. username
       3. password
-6. Exécution du WampServer
+4. Exécution de l'application
    
 ## 3. Présentation du projet
-&nbsp; Ayant eu l'idée de réaliser un site web de style "Airbnb" pour hotel pour chien, nous avons réalisé le projet PETCARE accompagnement des apprentissages du premier semestre de M1 de MIAGE.<br>
+&nbsp; Afin de répondre aux besoins exprimés de client, qui souhaite avoir une application des enchères en ligne, nous avons réalisé la modélisation et la programmation de l'application "Enchères en Ligne". Ce projet a été accompagné des enseignants de la formation M2 MIAGE IPM. <br>
 
-> <span style="font-size:13px">*"Affirme près de 25% de la population française. En effet, des statistiques montrent qu’un foyer sur deux possède un chien."*<br></span>
 
-&nbsp; Nous avons donc décidé de réaliser un site web qui permet de **rechercher** les chenils dans la région, **devenir et contacter** les gardiens particuliers, ainsi que **déclarer** la perte de chiens.
+&nbsp; Nous avons donc modélisé et réalisé une application permet de **mettre en vente** d'un objet, **enchérir sur un objet en vente**, ainsi que **s'inscrire, se connecter, et les autres fonctionnalités adapté aux types de l'utilistaeur**.
 
-## 4. Technologie 
-![tech](md_imgs/tech.png)
+## 4. Technologie
+UML
+Java
+Java Swing
+MySQL
+
 # Results
 ## 1. Résultat
-### *Main Page*
+### *Gestion des Membres*
   
-![MainPage](md_imgs/main.gif)
+![ConnexionClient](md_imgs/main.gif)
 <br>
-&nbsp;Présentation des trois services que l'on offre ; **Recherche de chenils**, **Contact des gardiens particuliers**, **Déclaration de perte de chien**
+&nbsp; ; **Recherche de chenils**, **Contact des gardiens particuliers**, **Déclaration de perte de chien**
 
 ---
 
