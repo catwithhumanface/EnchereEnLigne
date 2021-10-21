@@ -69,6 +69,7 @@ public class Membre {
         
         String sql = MembreSQL.SIGN_IN;
         try {
+            
             connection = DbConnexionManager.getConnection();
             pstmt = connection.prepareStatement(sql);
             pstmt.setInt(1, type);
@@ -80,17 +81,22 @@ public class Membre {
             if(result.next()){
                if(type==1){
                    membre = new MembreClient(Integer.parseInt(result.getString("idMembre")), result.getString("PseudoMembre"), 
-                           result.getString("DateNM"), result.getString("RueM"), result.getString("VillM"), result.getString("PaysM"),
+                           result.getDate("DateNM"), result.getString("RueM"), result.getString("VillM"), result.getString("PaysM"),
                            result.getString("EtatM"), result.getString("NumTel"), result.getString("Email"), result.getString("NomM"), 
                            result.getString("PrenomM"), result.getString("PasseWordM"));
                }else if(type==2){
                    membre = new MembreServiceInformatique(Integer.parseInt(result.getString("idMembre")), result.getString("PseudoMembre"), 
-                           result.getString("DateNM"), result.getString("RueM"), result.getString("VillM"), result.getString("PaysM"),
+                           result.getDate("DateNM"), result.getString("RueM"), result.getString("VillM"), result.getString("PaysM"),
                            result.getString("EtatM"), result.getString("NumTel"), result.getString("Email"), result.getString("NomM"), 
                            result.getString("PrenomM"), result.getString("PasseWordM"));
                }else if(type==3){
+                   membre = new MembreServiceCommercial(Integer.parseInt(result.getString("idMembre")), result.getString("PseudoMembre"), 
+                           result.getDate("DateNM"), result.getString("RueM"), result.getString("VillM"), result.getString("PaysM"),
+                           result.getString("EtatM"), result.getString("NumTel"), result.getString("Email"), result.getString("NomM"), 
+                           result.getString("PrenomM"), result.getString("PasseWordM"));
+               }else if(type==4){
                    membre = new MembreServiceJuridique(Integer.parseInt(result.getString("idMembre")), result.getString("PseudoMembre"), 
-                           result.getString("DateNM"), result.getString("RueM"), result.getString("VillM"), result.getString("PaysM"),
+                           result.getDate("DateNM"), result.getString("RueM"), result.getString("VillM"), result.getString("PaysM"),
                            result.getString("EtatM"), result.getString("NumTel"), result.getString("Email"), result.getString("NomM"), 
                            result.getString("PrenomM"), result.getString("PasseWordM"));
                }

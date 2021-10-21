@@ -34,4 +34,4 @@ public class GestionVenteSQL {
            "values(?,?,?,?,?)";
     final static String UPDATEOBJET = "update Objet set PrixAchat=PrixAchat+? where idObjet=?";
       
-  }
+  }  
