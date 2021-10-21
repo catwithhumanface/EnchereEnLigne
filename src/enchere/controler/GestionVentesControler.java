@@ -64,8 +64,8 @@ public class GestionVentesControler {
         return objet.getLesObjets();
     }
     
-    public void validerEnchere(int montantPas,int montantMax,int idNumo,int idMembre,Timestamp dateheure){
-        enchere.validerEncherir(montantPas,montantMax,idNumo,idMembre,dateheure);
+    public Boolean validerEnchere(int montantPas,int montantMax,int idNumo,int idMembre,Timestamp dateheure){
+        return enchere.validerEncherir(montantPas,montantMax,idNumo,idMembre,dateheure);
      }
                 
     public ArrayList<Enchere> getEncheres(int idObjet){

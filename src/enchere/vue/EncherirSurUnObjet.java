@@ -7,6 +7,7 @@ package enchere.vue;
 import enchere.controler.GestionMembresControler;
 import enchere.controler.GestionVentesControler;
 import enchere.model.Membre;
+import enchere.model.MembreClient;
 import enchere.model.Objet;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -20,7 +21,7 @@ import java.util.Date;
  */
 public class EncherirSurUnObjet extends javax.swing.JFrame {
     private Objet objet;
-    private Membre membre;
+    private MembreClient membre;
     private GestionMembresControler gestionMembreControler;
     private GestionVentesControler gestionVenteControler;
     /**
@@ -30,7 +31,7 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
         initComponents();
     }
     
-    public EncherirSurUnObjet(Objet objet, Membre membre) {
+    public EncherirSurUnObjet(Objet objet, MembreClient membre) {
         this.objet = objet;
         this.membre = membre;
         gestionMembreControler = new GestionMembresControler();
@@ -86,6 +87,10 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ENCHERIR SUR UN OBJET");
 
         MontantPasE.addActionListener(new java.awt.event.ActionListener() {
@@ -100,18 +105,26 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Prix d'achat");
 
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setText("Numéro de l'objet ");
 
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setText("Nouveau pas de l'enchère");
 
-        jLabel5.setText("Enchère automatique ");
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("ENCHERE AUTOMATIQUE");
 
-        jLabel6.setText("Titre de l'annonce");
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel6.setText("Titre");
 
+        jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel7.setText("Date de clôture");
 
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel8.setText("Pseudo");
 
         pseudo.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +133,7 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel9.setText("Mot de passe");
 
         motdepasse.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +142,9 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setText("Authentification pour enchérir");
+        jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("AUTHENTIFICATION");
 
         jButton1.setText("Valider");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -139,8 +155,10 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
 
         jButton2.setText("Annuler");
 
+        jLabel11.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel11.setText("Pas de l'enchère");
 
+        jLabel12.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel12.setText("Montant maximum");
 
         jLabelPrixAchat.setText("jLabel13");
@@ -174,8 +192,8 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(MontantPasE, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
+                                        .addComponent(MontantPasE, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(47, 47, 47)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,20 +201,20 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
                                                 .addComponent(motdepasse, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(59, 59, 59)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel7)
-                                                    .addComponent(jLabel6))
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel6)
+                                                    .addComponent(jLabel7))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addComponent(jLabelTempsRes)
                                                     .addComponent(jLabelTitreA)))))
-                                    .addComponent(MontantMaxE, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabelNumObj)
                                             .addComponent(jLabelPasEnchereAuto)
-                                            .addComponent(jLabelPrixAchat)))))))
+                                            .addComponent(jLabelPrixAchat)))
+                                    .addComponent(MontantMaxE, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(146, 146, 146)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,11 +228,11 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
+                        .addContainerGap()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -245,15 +263,15 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabelTempsRes))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MontantMaxE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MontantMaxE, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(pseudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,34 +323,30 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Mot de passe ou identifiant n'est pas correcte ");
         }
         
-        // Envoyer les données de l'enchère 
-        
+        // Envoyer les données de l'enchère
         String montantMax = MontantMaxE.getText();
         String montantpas = MontantPasE.getText();
-       
+        int montantMaxsql =0;
+        int montantPassql =0;
+        
+        if(montantpas.equals("")){
+            montantpas = jLabelPasEnchereAuto.getText();
+        }
+        montantPassql = Integer.parseInt(montantpas);
+        if(!montantMax.equals("")){
+            montantMaxsql = Integer.parseInt(montantMax);
+        }
+        
         Timestamp nowTime = new Timestamp(new Date().getTime());
         
-        // Les données vient de pase précédent 
-        
-        //String numO = NumO.getText();
-        //int numM;   
-        //String titreA = TitreA.getText();
-        if(montantMax.equals("")||montantpas.equals("")){
+        if(gestionVenteControler.validerEnchere(montantMaxsql,montantPassql, this.objet.getIdObjet(), this.membre.getIdMembre() ,nowTime)){
+            JOptionPane.showMessageDialog(null, "Votre enchère a bien été pris en compte");
+            ConsulterEncheres consulterEncheres = new ConsulterEncheres(this.membre);
+            consulterEncheres.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Veuillez bien mettre votre identifiant et le mot de passe");
         }
-        else{
-        int montantMaxsql = Integer.parseInt(montantMax);
-        int montantPassql = Integer.parseInt(montantpas);
-          
-        gestionVenteControler.validerEnchere(montantMaxsql,montantPassql,1,1,nowTime);
-        
-        }
-        
-      
-        
-        
-        
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void pseudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pseudoActionPerformed

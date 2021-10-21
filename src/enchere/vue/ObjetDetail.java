@@ -7,6 +7,7 @@ package enchere.vue;
 import enchere.controler.GestionVentesControler;
 import enchere.model.Enchere;
 import enchere.model.Membre;
+import enchere.model.MembreClient;
 import enchere.model.Objet;
 import java.sql.Date;
 import java.text.DateFormat;
@@ -47,15 +48,17 @@ public class ObjetDetail extends javax.swing.JFrame {
         gestionVentesControler = new GestionVentesControler();
         initComponents();
         initComponentsBD(objet);
+        
     }
     
     public void initComponentsBD(Objet objet){
+        jButtonEncherir.setVisible(false);
         titreA.setText(objet.getTitreA());
         prixAchat.setText(Integer.toString(objet.getPrixAchat()));
         descO.setText(objet.getDescO());
         encheres = gestionVentesControler.getEncheres(objet.getIdObjet());
         for (Enchere e: encheres){
-            System.out.println(e.getMontantPasE());
+            System.out.println("###"+e.getMontantPasE());
         }
         
         jLabelNoms = new ArrayList<JLabel>();
@@ -103,8 +106,8 @@ public class ObjetDetail extends javax.swing.JFrame {
             }
         }
         
-        if(this.membre==null){
-            jButtonEncherir.setVisible(false);
+        if(this.membre instanceof MembreClient){
+            jButtonEncherir.setVisible(true);
         }
     }
     /**
@@ -147,12 +150,17 @@ public class ObjetDetail extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
         titreA.setText("jLabel1");
 
         prixAchat.setText("jLabel1");
 
         descO.setText("jLabel1");
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 102));
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel1.setText("Liste des enchères");
 
         jLabel2.setText("Nom de l'enchérisseur");
@@ -207,9 +215,6 @@ public class ObjetDetail extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
@@ -235,6 +240,10 @@ public class ObjetDetail extends javax.swing.JFrame {
                     .addComponent(jLabel16)
                     .addComponent(jLabel19))
                 .addGap(26, 26, 26))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,8 +290,10 @@ public class ObjetDetail extends javax.swing.JFrame {
             }
         });
 
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("TItre de l'annonce : ");
 
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Prix achat :");
 
         jButtonRevenir.setText("Précédent");
@@ -300,22 +311,24 @@ public class ObjetDetail extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(descO)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addGap(35, 35, 35)
                         .addComponent(titreA)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                         .addComponent(jLabel21)
                         .addGap(47, 47, 47)
-                        .addComponent(prixAchat)))
+                        .addComponent(prixAchat))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addComponent(jButtonEncherir)
+                        .addGap(58, 58, 58)
+                        .addComponent(jButtonRevenir)))
                 .addGap(68, 68, 68))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addComponent(jButtonEncherir)
-                .addGap(27, 27, 27)
-                .addComponent(jButtonRevenir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,13 +341,13 @@ public class ObjetDetail extends javax.swing.JFrame {
                     .addComponent(jLabel21))
                 .addGap(18, 18, 18)
                 .addComponent(descO)
-                .addGap(26, 26, 26)
+                .addGap(62, 62, 62)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonEncherir)
-                    .addComponent(jButtonRevenir))
-                .addContainerGap(50, Short.MAX_VALUE))
+                    .addComponent(jButtonRevenir)
+                    .addComponent(jButtonEncherir))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -352,7 +365,7 @@ public class ObjetDetail extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEncherirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEncherirActionPerformed
-        EncherirSurUnObjet encherirSurUnObjet = new EncherirSurUnObjet(this.objet, this.membre);
+        EncherirSurUnObjet encherirSurUnObjet = new EncherirSurUnObjet(this.objet, (MembreClient)this.membre);
         encherirSurUnObjet.setVisible(true);
         this.dispose();
         

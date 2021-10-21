@@ -90,6 +90,11 @@ public class Membre {
                            result.getString("EtatM"), result.getString("NumTel"), result.getString("Email"), result.getString("NomM"), 
                            result.getString("PrenomM"), result.getString("PasseWordM"));
                }else if(type==3){
+                   membre = new MembreServiceCommercial(Integer.parseInt(result.getString("idMembre")), result.getString("PseudoMembre"), 
+                           result.getDate("DateNM"), result.getString("RueM"), result.getString("VillM"), result.getString("PaysM"),
+                           result.getString("EtatM"), result.getString("NumTel"), result.getString("Email"), result.getString("NomM"), 
+                           result.getString("PrenomM"), result.getString("PasseWordM"));
+               }else if(type==4){
                    membre = new MembreServiceJuridique(Integer.parseInt(result.getString("idMembre")), result.getString("PseudoMembre"), 
                            result.getDate("DateNM"), result.getString("RueM"), result.getString("VillM"), result.getString("PaysM"),
                            result.getString("EtatM"), result.getString("NumTel"), result.getString("Email"), result.getString("NomM"), 
