@@ -1,17 +1,20 @@
-drop table Enchere;
-drop table Choisir;
-drop table Commenter;
-drop table Statistique;
-drop table Objet;
-drop table Sous_souscategorie;
-drop table SousCategorie;
-drop table Categorie;
-drop table TypeAvis;
-drop table TypeOption;
-drop table Frais;
-drop table Membre;
-drop table TypeMembre;
 
+drop table if exists Enchere;
+drop table if exists Choisir;
+drop table if exists Commenter;
+drop table if exists Statistique;
+drop table if exists Objet;
+drop table if exists Sous_souscategorie;
+drop table if exists SousCategorie;
+drop table if exists Categorie;
+drop table if exists TypeAvis;
+drop table if exists TypeOption;
+drop table if exists Frais;
+drop table if exists Membre ;
+drop table if exists TypeMembre ;
+drop table if exists FraisCommission;
+drop table if exists FraisInsertion ;
+drop table if exists Region;
 
 
 CREATE TABLE Membre
@@ -29,14 +32,26 @@ CREATE TABLE Membre
     NomM VARCHAR(255),
     PrenomM VARCHAR(255),
     PasseWordM VARCHAR(255) 
+
 );
 
-CREATE TABLE Frais
+
+
+
+CREATE TABLE FraisInsertion
 (
-	IdFrais INT PRIMARY KEY AUTO_INCREMENT,
-	FraisInsertion INT, 
-    FraisCommission INT
+	FraisInsertion float PRIMARY KEY 
+
 );
+
+CREATE TABLE FraisCommission
+(
+
+    FraisCommission  float PRIMARY KEY
+
+
+);
+
 
 
 CREATE TABLE TypeOption 
@@ -61,6 +76,10 @@ CREATE TABLE Categorie
 );
 
 
+
+
+
+
 CREATE TABLE SousCategorie
 (
 	IdSousCategorie INT PRIMARY KEY AUTO_INCREMENT,
@@ -78,8 +97,6 @@ CREATE TABLE Sous_souscategorie
 	FOREIGN Key(IdSousCategorie) references SousCategorie(IdSousCategorie)	
 );
 
-
-
 CREATE TABLE Objet 
 (
 	idObjet INT PRIMARY KEY AUTO_INCREMENT,
@@ -91,16 +108,21 @@ CREATE TABLE Objet
 	Regiondelivraison VARCHAR(255),
 	Datedecloture DATE,
 	EtatVente VARCHAR(255),
-	PrixAchat VARCHAR(255),
+	PrixAchat INT,
+  FraisPort int,
+
 	idMembre INT,
-	IdFrais INT,
 	IdCodeCat INT,
+    IdSousCategorie INT,
+    IdSous_sous INT,
 
     FOREIGN Key (idMembre) REFERENCES Membre(idMembre),
-    FOREIGN Key (IdFrais) REFERENCES Frais(IdFrais),
-    FOREIGN KEY (IdCodeCat) REFERENCES Categorie (IdCodeCat)
+    FOREIGN KEY (IdCodeCat) REFERENCES Categorie (IdCodeCat),
+    FOREIGN KEY (IdSousCategorie) REFERENCES SousCategorie (IdSousCategorie),
+    FOREIGN KEY (IdSous_sous) REFERENCES Sous_souscategorie (IdSous_sous)
 
 );
+
 
 
 CREATE TABLE Statistique
@@ -219,10 +241,40 @@ insert into SousCategorie (LibSousCat,idCodeCat) VALUES ( 'Lavage', 2);
 insert into SousCategorie (LibSousCat,idCodeCat) VALUES ( 'Froid', 2);
 
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (1, 'Téléviseur4/3');
+
+INSERT INTO fraisInsertion values(0.1);
+INSERT INTO fraisInsertion values (0.2);
+INSERT INTO fraisInsertion values(0.4);
+INSERT INTO fraisInsertion values(1.0);
+
+INSERT INTO fraisCommission values(0.05);
+INSERT INTO fraisCommission values(0.03);
+INSERT INTO fraisCommission values(0.015);
+
+
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (1, 'Téléviseur16/9');
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (3, 'Lave linge');
 insert into Sous_souscategorie (IdSousCategorie,libSous_sous) VALUES (3, 'Sèche linge');
 
-insert into objet (TitreA, DescO, PrixDepart, PrixReserve, Prixachatimmediat, Regiondelivraison, Datedecloture,
-EtatVente, PrixAchat, idMembre, )
+
+Create Table Region ( 
+    regionL VARCHAR(256),
+	PRIMARY KEY (regionL)
+);
+
+insert into Region (regionL) VALUES ( "Chine");
+insert into Region (regionL) VALUES ( 'Corée');
+insert into Region (regionL) VALUES ( 'nicaragua');
+insert into Region (regionL) VALUES ( "Côte d'Ivoire");
+
+insert into Objet (TitreA, DescO, PrixDepart, PrixReserve, Prixachatimmediat, Regiondelivraison, EtatVente, PrixAchat, FraisPort, idMembre, IdCodeCat, IdSousCategorie, IdSous_sous) values("titre", "desc", 100, 100, 300, "toulouse", "en cours", 0, 0, 1, 1, 1,1);
+
+insert into Objet (TitreA, DescO, PrixDepart, PrixReserve, Prixachatimmediat, Regiondelivraison, EtatVente, PrixAchat, FraisPort, idMembre, IdCodeCat, IdSousCategorie, IdSous_sous) values("titre1", "desc", 100, 100, 300, "toulouse", "en cours", 0, 0, 1, 1, 1,1);
+
+
+
+
+
+
+
 

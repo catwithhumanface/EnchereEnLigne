@@ -1,10 +1,18 @@
 package enchere.model;
 
+
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-// Afficher les catégorie dans la page mise en vente
+
 public class Categorie {
+    private int id;
+    private String libCategorie;
+    private CategorieService cs;
+    private ArrayList<Objet> listObjets;
+    
+    // Afficher les catégorie dans la page mise en vente
     public ArrayList<String> getTypeCategorie() {
         ResultSet rs = null;
         ArrayList<String> result = new ArrayList<String>();
@@ -27,6 +35,16 @@ public class Categorie {
             dbConnexionManager.closeObjects(connection, statement);
         }
         return result;
+
+   }
+  
+    public String getName(){
+        return this.libCategorie;
     }
 
-}
+    public int getId() {
+        return id;
+    }
+    
+    
+  }
