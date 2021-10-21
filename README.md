@@ -22,29 +22,45 @@
 4. Exécution de l'application
    
 ## 3. Présentation du projet
-&nbsp; Afin de répondre aux besoins exprimés de client, qui souhaite avoir une application des enchères en ligne, nous avons réalisé la modélisation et la programmation de l'application "Enchères en Ligne". Ce projet a été accompagné des enseignants de la formation M2 MIAGE IPM. <br>
+Afin de répondre aux besoins exprimés de client, qui souhaite avoir une application des enchères en ligne, nous avons réalisé la modélisation et la programmation de l'application "Enchères en Ligne". Ce projet a été accompagné des enseignants de la formation M2 MIAGE IPM. <br>
 
 
 &nbsp; Nous avons donc modélisé et réalisé une application permet de **mettre en vente** d'un objet, **enchérir sur un objet en vente**, ainsi que **s'inscrire, se connecter, et les autres fonctionnalités adapté aux types de l'utilistaeur**.
 
 ## 4. Technologie
-UML
-Java
-Java Swing
-MySQL
+UML<br>
+Java<br>
+Java Swing<br>
+MySQL<br>
 
 # Results
 ## 1. Résultat
 ### *Gestion des Membres*
-  
-![ConnexionClient](md_imgs/main.gif)
+![ConnexionClient](img/ConnexionClient.gif)
 <br>
-&nbsp; ; **Recherche de chenils**, **Contact des gardiens particuliers**, **Déclaration de perte de chien**
 
 ---
 
-### *Chenils*
-![ChenilsPage](md_imgs/chenils.gif)
+![ConsulterMesParticipations](img/ConsulterMesParticipations.gif)
+<br>
+&nbsp; ; **Connexion**, **Consulter les enchères en cours**, **Enchérir sur un objet**, **Consulter mes participations**
+
+---
+
+
+![ConnexionServiceClient](img/ConnexionServiceClient.gif)
+<br>
+&nbsp; ; **Connexion**, **Consulter les enchères en cours**, **Consulter les statistiques**
+
+---
+
+![InscriptionClient](img/InscriptionClient.gif)
+<br>
+&nbsp; ; **Inscription*
+
+
+### *Gestion des Ventes*
+![EncherirClient](img/EncherirClient.gif)
 <br>
 &nbsp; L'importation de API de **OpenStreetMap** permet de savoir où se trouve les chenils. Grâce aux bulle d'infos en **javascript**, les utilisateurs peuvent également savoir le nom de chenils lié. L'entrepôt de donnés possédent les chenils existant dans la région toulousaine. Selon les chenils, les informations sur le site ou leur contact sont mise à dispositin.<br><br>
 
