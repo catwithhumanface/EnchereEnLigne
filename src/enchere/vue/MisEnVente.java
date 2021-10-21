@@ -8,6 +8,8 @@ import enchere.controler.GestionVentesControler;
 import enchere.model.Membre;
 import enchere.model.MembreClient;
 import javax.swing.JOptionPane;
+import enchere.model.Membre;
+import enchere.model.MembreClient;
 
 /**
  *
@@ -33,6 +35,8 @@ public class MisEnVente extends javax.swing.JFrame {
         for (String regionAjout : gestionVentesControler.getTypeRegion()) {
             Regiondelivraison.addItem(regionAjout);
         }
+            
+            
 
     }
 
@@ -310,6 +314,7 @@ public class MisEnVente extends javax.swing.JFrame {
         String Cate = this.categorie.getSelectedItem().toString();
         String SousCate = this.sousCategorie.getSelectedItem().toString();
         String Sous_sous = this.sous_Sous.getSelectedItem().toString();
+        int idMembre = membre.getIdMembre();
 
         // Vérifier si les infos sont bien saisi, on va les transformer son format pour insérer à BD
         if (TitreA.equals("") || DescO.equals("") || PrixDepart.equals("") || PrixReserve.equals("") || Datedecoloture == null
@@ -321,7 +326,7 @@ public class MisEnVente extends javax.swing.JFrame {
             int PrixReservesql = Integer.parseInt(PrixReserve);
             int FraisPortsql = Integer.parseInt(FraisPort);
             gestionVentesControler.validerMisenVente(TitreA, DescO, PrixDepartsql, PrixReservesql,
-                    Prixachatimmediat, Regiondelivraison, sqldateL, FraisPortsql, Cate, SousCate, Sous_sous);
+                    Prixachatimmediat,idMembre, Regiondelivraison, sqldateL, FraisPortsql, Cate, SousCate, Sous_sous);
         }
 
 
