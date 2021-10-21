@@ -25,7 +25,7 @@ public class MisEnVente extends javax.swing.JFrame {
     }
     
     public MisEnVente(MembreClient membre) {
-
+        this.membre = membre;
         initComponents();
         gestionVentesControler = new GestionVentesControler();
         for (String categorieAjout : gestionVentesControler.getCategorie()) {
