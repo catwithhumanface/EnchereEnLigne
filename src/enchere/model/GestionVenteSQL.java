@@ -23,12 +23,15 @@ public class GestionVenteSQL {
     final static String REGION ="select regionL from Region";
     final static String MISENVENTE = "insert into Objet(TitreA,DescO,PrixDepart,PrixReserve,"+ 
            "Prixachatimmediat,Regiondelivraison,Datedecloture,EtatVente,PrixAchat,idMembre,FraisPort,IdCodeCat,IdSousCategorie,IdSous_sous)"+
-           "values(?,?,?,?,?,?,?,'En Vente',0,1,?,?,?,?)";
+           "values(?,?,?,?,?,?,?,'En Vente',?,1,?,?,?,?)";
    
     final static String GetCATE = "select LibCat from Categorie";
     final static String GetSOUSSOUS = "select LibSous_sous from Sous_souscategorie";
     final static String GETLESOBJETS = "select * from Objet";
     final static String GETENCHERES = "select * from Enchere where idObjet = ?";
     final static String GETENCHERISSEUR = "select * from Membre where idMembre = ?";
+    final static String VALIDERENCHERIR = "insert into enchere(MontantPasE,MontantMaxE,dateheureEnchere,idMembre,idObjet)"+
+           "values(?,?,?,?,?)";
+      
   }   
   
