@@ -49,15 +49,11 @@ public class Statistique {
         gsm=new GestionStatsModel();
         float CATotal=0;
         float CACategorie=0;
-       
-            //On vérifie si la semaine n'est pas déja crée, on initialise le CA lors d'une nouvelle semaine
-            
-                
+           
                 try {
                     for(Categorie categorie : gsm.getCategories()){
                         String libelleCategorie=categorie.getName();
-                        //Lors d'une nouvelle semaine on initialise le CA
-                       
+                        CACategorie=gsm.calculCA(libelleCategorie);
                         CATotal=CATotal+CACategorie;
                     }
                 } catch (ClassNotFoundException ex) {
@@ -89,7 +85,7 @@ public class Statistique {
         try {
             for(Categorie categorie : gsm.getCategories()){
                 String libelleCategorie=categorie.getName();
-                nbObjetCategorie=gsm.calculNbVisiteCategorie(libelleCategorie);
+                nbObjetCategorie=gsm.calculNbObjet(libelleCategorie);
                 nbObjetTotal=nbObjetCategorie+nbObjetTotal;
             }
         } catch (ClassNotFoundException ex) {

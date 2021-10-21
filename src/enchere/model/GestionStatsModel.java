@@ -86,7 +86,7 @@ public class GestionStatsModel {
         return listSemaineStat;
     }
     
-    //recupérer tous les objets d'une catégorie pour la semaine en cours
+    //recupérer tous les objets d'une catégorie
     public ArrayList<Objet> getListObjetCategorie(String  libCategorie) {
         
         ArrayList<Objet> listObjetCategorie;
@@ -95,7 +95,7 @@ public class GestionStatsModel {
         try {
             connection = DbConnexionManager.getConnection();
             statement = connection.createStatement();
-            String query="SELECT * from objet, categorie where objet.IdCodeCat=categorie.IdCodeCat and weekofyear(Datedecloture)=weekofyear(now()) and LibCat='"+libCategorie+"' ";
+            String query="SELECT * from objet, categorie where objet.IdCodeCat=categorie.IdCodeCat  and LibCat='"+libCategorie+"' ";
             result = statement.executeQuery(query);
             while(result.next()){
                 objet=fromResultRowToObjet(result);
@@ -111,7 +111,7 @@ public class GestionStatsModel {
     }
 
     
-    //Cette méthode calcul le CA à partir de tous les objets d'une catégorie pour la semaine en cours
+    //Cette méthode calcul le CA à partir de tous les objets d'une catégorie 
     public float calculCA(String libCategorie) throws ClassNotFoundException{
         float CA=0;
         for(Objet numObjet: getListObjetCategorie(libCategorie) ){ 
@@ -122,13 +122,13 @@ public class GestionStatsModel {
     }
     
     
-    //Compter le nombre d'objet d'une catégorie pour la semaine en cours
+    //Compter le nombre d'objet d'une catégorie
      public int calculNbObjet(String  libCategorie) {
         int nbObjets=0;
         try {
             connection = DbConnexionManager.getConnection();
             statement = connection.createStatement();
-            String query="SELECT count(objet.idObjet) from objet, categorie where objet.IdCodeCat=categorie.IdCodeCat and weekofyear(Datedecloture)=weekofyear(now()) and LibCat='"+libCategorie+"' ";
+            String query="SELECT count(objet.idObjet) from objet, categorie where objet.IdCodeCat=categorie.IdCodeCat AND  LibCat='"+libCategorie+"' ";
             result = statement.executeQuery(query);
             while(result.next()){
                 nbObjets = result.getInt(1);
@@ -142,7 +142,7 @@ public class GestionStatsModel {
 
     }
   
-    //Calcul du nombre de visite des objets apaprtenant à une catégorie pour la semaine en cours
+    //Calcul du nombre de visite des objets apaprtenant à une catégorie
     public int calculNbVisiteCategorie(String libCategorie) throws ClassNotFoundException{
         int nbVisiteCategorie=0;
         for(Objet objet: getListObjetCategorie(libCategorie) ){

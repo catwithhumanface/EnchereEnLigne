@@ -12,7 +12,7 @@ public class GestionStatsControler {
     private GestionStatsModel gsm;
     private Statistique stat;
     public GestionStatsControler(){
-        //categorie=new Categorie();
+        categorie=new Categorie();
         gsm=new GestionStatsModel();
         stat=new Statistique();
     }
@@ -42,11 +42,11 @@ public class GestionStatsControler {
         return stat.calculNbObjetTotal();
     }
     //Cette fonction retourne les visites totales pour une semaine
-    private int getNbVisiteTotal(){
+    public int getNbVisiteTotal(){
         return stat.calculVisiteTotal();
     }
     //Cette fonction retourne le CA Total par catégorie pour une semaine
-    private float getCATotal(){
+    public float getCATotal(){
         return stat.calculTotalCA();
     }
     public void insererStat() throws ClassNotFoundException{

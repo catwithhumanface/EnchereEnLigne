@@ -129,7 +129,7 @@ public class StatsVue extends javax.swing.JFrame {
 
        // En-tête de la table
        String header[] = new String[] { "Catégorie", "Chiffre d'affaires", "Nombre de visites",
-                   "Nombre d'objets","Total"};
+                   "Nombre d'objets"};
 
        // add header in table model     
         dtm.setColumnIdentifiers(header);
@@ -141,9 +141,9 @@ public class StatsVue extends javax.swing.JFrame {
        int nbObjets=0;
        float CA;
        int nbVisites=0;
-//       int nbObjetsTotal=statControler.getNbObjetTotal();
-//       float CATotal=statControler.getCATotal();
-//       int nbVisitesTotal=statControler.getNbVisiteTotal();
+       int nbObjetsTotal=statControler.getNbObjetTotal();
+       float CATotal=statControler.getCATotal();
+       int nbVisitesTotal=statControler.getNbVisiteTotal();
        
        
        int lastLigne=statControler.getMyLibCategories().size();
@@ -155,10 +155,13 @@ public class StatsVue extends javax.swing.JFrame {
            
            //Ajout des lignes
            dtm.addRow( new Object[] {libelleCategorie,CA,nbVisites,nbObjets});
-           statistiques.setValueAt('Total',lastLigne,0 );
            
-       
         }
+    dtm.addRow( new Object[] {"Total",0,0,0});
+    statistiques.setValueAt("Total", lastLigne,0);
+    statistiques.setValueAt(CATotal,lastLigne,1);
+    statistiques.setValueAt(nbVisitesTotal,lastLigne,2);
+    statistiques.setValueAt(nbObjetsTotal,lastLigne,3);
        
 
         jScrollPane1.setViewportView(statistiques);     
