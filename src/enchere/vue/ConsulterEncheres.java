@@ -23,17 +23,14 @@ public class ConsulterEncheres extends javax.swing.JFrame {
     private ArrayList<JLabel> jLabelTitres;
     private ArrayList<JLabel> jLabelPrix;
     private ArrayList<JButton> jButtonDetail;
-    private ArrayList<Action> actions;
+    private ArrayList<Boolean> jButtonVisible;
     /**
      * Creates new form ConsulterEncheres
      */
     public ConsulterEncheres() {
         gestionVentesControler = new GestionVentesControler();
-        initComponents();
         objets = gestionVentesControler.getLesObjets();
-        for(Objet o : objets){
-            System.out.println(o.getTitreA());
-        }
+        initComponents();
         initComponentesBD();
     }
     
@@ -49,6 +46,7 @@ public class ConsulterEncheres extends javax.swing.JFrame {
         jLabelTitres = new ArrayList<JLabel>();
         jLabelPrix = new ArrayList<JLabel>();
         jButtonDetail = new ArrayList<JButton>();
+        jButtonVisible = new ArrayList<Boolean>();
         
         jLabelTitres.add(jLabel3);
         jLabelTitres.add(jLabel5);
@@ -80,14 +78,15 @@ public class ConsulterEncheres extends javax.swing.JFrame {
             j.setVisible(false);
         }
         
+        
         for(int k=0; k<objets.size(); k++){
-            System.out.println("k="+k);
             jLabelTitres.get(k).setVisible(true);
             jLabelTitres.get(k).setText(objets.get(k).getTitreA());
             jLabelPrix.get(k).setVisible(true);
             jLabelPrix.get(k).setText(Integer.toString(objets.get(k).getPrixAchat()));
             jButtonDetail.get(k).setVisible(true);
-            jButtonDetail.get(k).setText("Enchérir");
+            jButtonDetail.get(k).setText("Voir plus");
+            jButtonVisible.add(true);
         }
         
         
@@ -180,12 +179,32 @@ public class ConsulterEncheres extends javax.swing.JFrame {
         });
 
         jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("jButton4");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("jButton5");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("jButton6");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -318,12 +337,80 @@ public class ConsulterEncheres extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAccueilActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        ObjetDetail objetDetail;
+        if(jButtonVisible.get(0)){
+            Objet objet = objets.get(0);
+            if(this.membre!=null){
+                objetDetail = new ObjetDetail(objet, this.membre);
+            }else{
+                objetDetail = new ObjetDetail(objet);
+            }
+            
+            int visiteObjet = objet.getVisiteObjet();
+            objet.setVisiteObjet(visiteObjet+1);
+            objetDetail.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        if(jButtonVisible.get(1)){
+            Objet objet = objets.get(1);
+            ObjetDetail objetDetail = new ObjetDetail(objet);
+            int visiteObjet = objet.getVisiteObjet();
+            objet.setVisiteObjet(visiteObjet+1);
+            objetDetail.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        if(jButtonVisible.get(2)){
+            Objet objet = objets.get(2);
+            ObjetDetail objetDetail = new ObjetDetail(objet);
+            int visiteObjet = objet.getVisiteObjet();
+            objet.setVisiteObjet(visiteObjet+1);
+            objetDetail.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        if(jButtonVisible.get(3)){
+            Objet objet = objets.get(3);
+            ObjetDetail objetDetail = new ObjetDetail(objet);
+            int visiteObjet = objet.getVisiteObjet();
+            objet.setVisiteObjet(visiteObjet+1);
+            objetDetail.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        if(jButtonVisible.get(4)){
+            Objet objet = objets.get(4);
+            ObjetDetail objetDetail = new ObjetDetail(objet);
+            int visiteObjet = objet.getVisiteObjet();
+            objet.setVisiteObjet(visiteObjet+1);
+            objetDetail.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        if(jButtonVisible.get(5)){
+            Objet objet = objets.get(5);
+            ObjetDetail objetDetail = new ObjetDetail(objet);
+            int visiteObjet = objet.getVisiteObjet();
+            objet.setVisiteObjet(visiteObjet+1);
+            objetDetail.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

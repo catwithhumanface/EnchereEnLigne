@@ -7,6 +7,7 @@ package enchere.vue;
 import enchere.controler.GestionMembresControler;
 import enchere.controler.GestionVentesControler;
 import enchere.model.Membre;
+import enchere.model.Objet;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,7 +18,8 @@ import java.util.Date;
  * @author Tong
  */
 public class EncherirSurUnObjet extends javax.swing.JFrame {
-    
+    private Objet objet;
+    private Membre membre;
     private GestionMembresControler gestionMembreControler;
     private GestionVentesControler gestionVenteControler;
     /**
@@ -28,6 +30,12 @@ public class EncherirSurUnObjet extends javax.swing.JFrame {
         gestionMembreControler = new GestionMembresControler();
         gestionVenteControler = new GestionVentesControler();
         
+    }
+    
+    public EncherirSurUnObjet(Objet objet, Membre membre) {
+        this.objet = objet;
+        this.membre = membre;
+        initComponents();
     }
 
     /**

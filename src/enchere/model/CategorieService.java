@@ -42,7 +42,7 @@ public class CategorieService {
         try {
             connection = DbConnexionManager.getConnection();
             statement = connection.createStatement();
-            String query="SELECT count(objet.idObjet) from objet, categorie where objet.IdCodeCat=categorie.IdCodeCat and LibCat='"+libCategorie+"' ";
+            String query="SELECT count(objet.idObjet) from Objet, Categorie where objet.IdCodeCat=Categorie.IdCodeCat and LibCat='"+libCategorie+"' ";
             result = statement.executeQuery(query);
             while(result.next()){
                 nbObjets = result.getInt(1);
@@ -103,7 +103,7 @@ public class CategorieService {
         try {
             connection = DbConnexionManager.getConnection();
             statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("Select * from categorie");
+            ResultSet result = statement.executeQuery("Select * from Categorie");
             while (result != null && result.next()) {
                 Categorie categorie = fromResultRowToCategorie(result);
                 categories.add(categorie);

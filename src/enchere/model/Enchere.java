@@ -1,17 +1,73 @@
 package enchere.model;
 
-import java.sql.Connection;
 import java.sql.Date;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
+
 public class Enchere {
+    private int montantPasE;
+    private int montantMaxE;
+    private Date dateheureEnchere;
+    private int idMembre;
+    private int idObjet;
+    
     public Enchere(){
+        
     }
     
+    public Enchere(int montantPasE, int montantMaxE, Date dateheureEnchere, int idMembre, int idObjet) {
+        this.montantPasE = montantPasE;
+        this.montantMaxE = montantMaxE;
+        this.dateheureEnchere = dateheureEnchere;
+        this.idMembre = idMembre;
+        this.idObjet = idObjet;
+    }
+    
+    public int getMontantPasE() {
+        return montantPasE;
+    }
+
+    public void setMontantPasE(int montantPasE) {
+        this.montantPasE = montantPasE;
+    }
+
+    public int getMontantMaxE() {
+        return montantMaxE;
+    }
+
+    public void setMontantMaxE(int montantMaxE) {
+        this.montantMaxE = montantMaxE;
+    }
+
+    public Date getDateheureEnchere() {
+        return dateheureEnchere;
+    }
+
+    public void setDateheureEnchere(Date dateheureEnchere) {
+        this.dateheureEnchere = dateheureEnchere;
+    }
+
+    public int getIdMembre() {
+        return idMembre;
+    }
+
+    public void setIdMembre(int idMembre) {
+        this.idMembre = idMembre;
+    }
+
+    public int getIdObjet() {
+        return idObjet;
+    }
+  
+    public void setIdObjet(int idObjet) {
+        this.idObjet = idObjet;
+    }
+  
     public void validerEncherir(int montantMax, int montantPas, int idObjet,int idMembre,Timestamp dateheureEnchere){
         Connection connection = null;
         PreparedStatement pstmt = null;
@@ -44,9 +100,10 @@ public class Enchere {
         } finally {
           DbConnexionManager.closeObjects(connection, pstmt);
         }
-    
-        
-        
     }
 
+    
+    
+    
+    
 }

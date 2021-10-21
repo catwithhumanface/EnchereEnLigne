@@ -7,6 +7,7 @@ package enchere.vue;
 import enchere.controler.GestionMembresControler;
 import enchere.model.Membre;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -160,7 +161,7 @@ public class Connexion extends javax.swing.JFrame {
             index.setVisible(true);
             this.dispose();
         }else{
-            
+            JOptionPane.showMessageDialog(null, "Veuillez vérifier votre pseudo et votre mot de passe");
         }
     }//GEN-LAST:event_jButtonSeConnecterActionPerformed
 
