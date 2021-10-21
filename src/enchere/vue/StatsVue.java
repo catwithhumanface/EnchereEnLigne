@@ -141,9 +141,9 @@ public class StatsVue extends javax.swing.JFrame {
        int nbObjets=0;
        float CA;
        int nbVisites=0;
-       int nbObjetsTotal=statControler.getNbObjetTotal();
-       float CATotal=statControler.getCATotal();
-       int nbVisitesTotal=statControler.getNbVisiteTotal();
+//       int nbObjetsTotal=statControler.getNbObjetTotal();
+//       float CATotal=statControler.getCATotal();
+//       int nbVisitesTotal=statControler.getNbVisiteTotal();
        
        
        int lastLigne=statControler.getMyLibCategories().size();
