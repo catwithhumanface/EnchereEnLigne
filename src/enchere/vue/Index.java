@@ -6,7 +6,10 @@ package enchere.vue;
 
 import enchere.controler.GestionMembresControler;
 import enchere.model.Membre;
+import enchere.model.MembreClient;
 import enchere.model.MembreServiceCommercial;
+import enchere.model.MembreServiceInformatique;
+import enchere.model.MembreServiceJuridique;
 import java.util.ArrayList;
 
 /**
@@ -24,6 +27,7 @@ public class Index extends javax.swing.JFrame {
         initComponents();
         membreControler = new GestionMembresControler();
         jButtonStats.setVisible(false);
+        jButtonMisEnVente.setVisible(false);
     }
     
     public Index(Membre membre){
@@ -32,9 +36,7 @@ public class Index extends javax.swing.JFrame {
         jButtonSinscrire.setVisible(false);
         this.membre = membre;
         jButtonStats.setVisible(false);
-        
         if(membre instanceof MembreServiceCommercial){
-            System.out.println("fff");
             jButtonStats.setVisible(true);
         }
     }
@@ -55,6 +57,7 @@ public class Index extends javax.swing.JFrame {
         jButtonSinscrire = new javax.swing.JButton();
         jButtonConsulteEncheres = new javax.swing.JButton();
         jButtonStats = new javax.swing.JButton();
+        jButtonMisEnVente = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -97,27 +100,36 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jButtonMisEnVente.setText("Mettre en vente d'un objet");
+        jButtonMisEnVente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisEnVenteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelAccueilLayout = new javax.swing.GroupLayout(jPanelAccueil);
         jPanelAccueil.setLayout(jPanelAccueilLayout);
         jPanelAccueilLayout.setHorizontalGroup(
             jPanelAccueilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAccueilLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jButtonConsulteEncheres)
-                .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAccueilLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(259, Short.MAX_VALUE)
                 .addGroup(jPanelAccueilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAccueilLayout.createSequentialGroup()
-                        .addGroup(jPanelAccueilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelAccueilLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jButtonSinscrire))
-                            .addComponent(jButtonConnexion))
-                        .addGap(17, 17, 17))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAccueilLayout.createSequentialGroup()
-                        .addComponent(jButtonStats)
-                        .addGap(79, 79, 79))))
+                    .addGroup(jPanelAccueilLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jButtonSinscrire))
+                    .addComponent(jButtonConnexion))
+                .addGap(17, 17, 17))
+            .addGroup(jPanelAccueilLayout.createSequentialGroup()
+                .addGroup(jPanelAccueilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAccueilLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jButtonConsulteEncheres))
+                    .addGroup(jPanelAccueilLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(jPanelAccueilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonMisEnVente)
+                            .addComponent(jButtonStats))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelAccueilLayout.setVerticalGroup(
             jPanelAccueilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,8 +141,10 @@ public class Index extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jButtonConsulteEncheres)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonMisEnVente)
+                .addGap(29, 29, 29)
                 .addComponent(jButtonStats)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,7 +193,16 @@ public class Index extends javax.swing.JFrame {
 
     private void jButtonStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStatsActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonStatsActionPerformed
+
+    private void jButtonMisEnVenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisEnVenteActionPerformed
+        // TODO add your handling code here:
+        MisEnVente misEnvente = new MisEnVente((MembreClient)this.membre);
+        misEnvente.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButtonMisEnVenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +243,7 @@ public class Index extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConnexion;
     private javax.swing.JButton jButtonConsulteEncheres;
+    private javax.swing.JButton jButtonMisEnVente;
     private javax.swing.JButton jButtonSinscrire;
     private javax.swing.JButton jButtonStats;
     private javax.swing.JPanel jPanel2;

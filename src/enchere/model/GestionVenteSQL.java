@@ -18,7 +18,7 @@ public class GestionVenteSQL {
     final static String GETIDCATESous_sous= "Select idSous_sous from sous_souscategorie ssc where ssc.libSous_sous = ?"; 
    
     final static String GETSOUSCAT = "Select LibSousCat from SousCategorie SC, Categorie C where SC.idCodeCat = C.IdCodeCat and C.LibCat =?";   
-    final static String GETSOUS_SOUS = "Select LibSous_sous from SousCategorie SC, Sous_souscategorie ssC where SC.IdSousCategorie = ssc.IdSousCategorie and SC.LibSousCat =?";  
+    final static String GETSOUS_SOUS = "Select LibSous_sous from SousCategorie SC, Sous_souscategorie ssc where SC.IdSousCategorie = ssc.IdSousCategorie and SC.LibSousCat =?";  
    
     final static String REGION ="select regionL from Region";
     final static String MISENVENTE = "insert into Objet(TitreA,DescO,PrixDepart,PrixReserve,"+ 
