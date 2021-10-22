@@ -135,7 +135,7 @@ public class Objet {
     }
 
     public int getVisiteObjet() {
-        return visiteObjet;
+        return 1;
     }
 
     public Frais getFrais() {

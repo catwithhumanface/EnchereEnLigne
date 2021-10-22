@@ -26,6 +26,7 @@ public class ObjetDetail extends javax.swing.JFrame {
     private ArrayList<JLabel> jLabelMontants;
     private ArrayList<JLabel> jLabelDates;
     private ArrayList<Enchere> encheres;
+    private int nbVisiteObjet=5;
     private Membre membre;
     /**
      * Creates new form ObjetDetail
@@ -36,6 +37,9 @@ public class ObjetDetail extends javax.swing.JFrame {
     
     public ObjetDetail(Objet objet) {
         this.objet = objet;
+        int lastNbVisiteObjet=objet.getVisiteObjet();
+        nbVisiteObjet=lastNbVisiteObjet+1;
+        objet.setVisiteObjet(nbVisiteObjet);
         encheres = new ArrayList<Enchere>();
         gestionVentesControler = new GestionVentesControler();
         initComponents();
@@ -50,6 +54,7 @@ public class ObjetDetail extends javax.swing.JFrame {
         initComponentsBD(objet);
         
     }
+   
     
     public void initComponentsBD(Objet objet){
         jButtonEncherir.setVisible(false);

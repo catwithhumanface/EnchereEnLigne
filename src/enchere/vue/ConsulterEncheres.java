@@ -348,6 +348,7 @@ public class ConsulterEncheres extends javax.swing.JFrame {
             
             int visiteObjet = objet.getVisiteObjet();
             objet.setVisiteObjet(visiteObjet+1);
+            System.out.println(visiteObjet);
             objetDetail.setVisible(true);
             this.dispose();
         }
