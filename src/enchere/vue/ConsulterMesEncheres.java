@@ -23,11 +23,13 @@ public class ConsulterMesEncheres extends javax.swing.JFrame {
     private GestionMembresControler gestionMembreControler;
     private ArrayList<Objet> mesVentes = new ArrayList<Objet>();
     private ArrayList<Enchere> mesEncheres = new ArrayList<Enchere>();
+    private GestionVentesControler gestionVentesControler;
     private MembreClient membre;
     private ArrayList<JLabel> jLabelTitresVentes;
     private ArrayList<JLabel> jLabelPrixVentes;
-    private ArrayList<JLabel> jLabelTitresE;
+    private ArrayList<JLabel> jLabelMontantPasE;
     private ArrayList<JLabel> jLabelPrixE;
+    private ArrayList<JLabel> jLabelTitreE;
     
     /**
      * Creates new form ConsulterEncheres
@@ -39,6 +41,7 @@ public class ConsulterMesEncheres extends javax.swing.JFrame {
     public ConsulterMesEncheres(MembreClient membre){
         this.membre = membre;
         gestionMembreControler = new GestionMembresControler();
+        gestionVentesControler = new GestionVentesControler();
         mesVentes = gestionMembreControler.getMesVentes(membre.getIdMembre());
         mesEncheres = gestionMembreControler.getMesEncheres(membre.getIdMembre());
         initComponents();
@@ -49,31 +52,34 @@ public class ConsulterMesEncheres extends javax.swing.JFrame {
         jLabelTitresVentes = new ArrayList<JLabel>();
         jLabelPrixVentes = new ArrayList<JLabel>();
         
-        jLabelTitresE = new ArrayList<JLabel>();
+        jLabelMontantPasE = new ArrayList<JLabel>();
         jLabelPrixE = new ArrayList<JLabel>();
-        
+        jLabelTitreE = new ArrayList<JLabel>();
         
         jLabelTitresVentes.add(jLabel3);
         jLabelTitresVentes.add(jLabel5);
         jLabelTitresVentes.add(jLabel7);
         
-        jLabelTitresE.add(jLabel9);
-        jLabelTitresE.add(jLabel11);
-        jLabelTitresE.add(jLabel13);
+        jLabelMontantPasE.add(jLabel9);
+        jLabelMontantPasE.add(jLabel10);
+        jLabelMontantPasE.add(jLabel11);
         
         for(JLabel j : jLabelTitresVentes){
             j.setVisible(false);
         }
-        for(JLabel j : jLabelTitresE){
+        for(JLabel j : jLabelMontantPasE){
             j.setVisible(false);
         }
         
         jLabelPrixVentes.add(jLabel4);
         jLabelPrixVentes.add(jLabel6);
         jLabelPrixVentes.add(jLabel8);
-        jLabelPrixE.add(jLabel10);
         jLabelPrixE.add(jLabel12);
+        jLabelPrixE.add(jLabel13);
         jLabelPrixE.add(jLabel14);
+        jLabelTitreE.add(jLabel19);
+        jLabelTitreE.add(jLabel20);
+        jLabelTitreE.add(jLabel21);
         
         for(JLabel j : jLabelPrixVentes){
             j.setVisible(false);
@@ -81,23 +87,32 @@ public class ConsulterMesEncheres extends javax.swing.JFrame {
         for(JLabel j : jLabelPrixE){
             j.setVisible(false);
         }
-        
-        int limit = 3;
-        if(mesVentes.size()<=3){
-            limit = mesVentes.size();
+        for(JLabel j : jLabelTitreE){
+            j.setVisible(false);
         }
-        for(int k=0; k<limit; k++){
+        
+        int limitV = 3;
+        if(mesVentes.size()<=3){
+            limitV = mesVentes.size();
+        }
+        for(int k=0; k<limitV; k++){
             jLabelTitresVentes.get(k).setVisible(true);
             jLabelTitresVentes.get(k).setText(mesVentes.get(k).getTitreA());
             jLabelPrixVentes.get(k).setVisible(true);
             jLabelPrixVentes.get(k).setText(Integer.toString(mesVentes.get(k).getPrixAchat()));
         }
         
-        for(int k=0; k<limit; k++){
-            jLabelTitresE.get(k).setVisible(true);
-            jLabelTitresE.get(k).setText(Integer.toString(mesEncheres.get(k).getMontantPasE()));
+        int limitE = 3;
+        if(mesVentes.size()<=3){
+            limitE = mesEncheres.size();
+        }
+        for(int k=0; k<limitE; k++){
+            jLabelMontantPasE.get(k).setVisible(true);
+            jLabelMontantPasE.get(k).setText(Integer.toString(mesEncheres.get(k).getMontantPasE()));
             jLabelPrixE.get(k).setVisible(true);
-            jLabelPrixE.get(k).setText(Integer.toString(mesEncheres.get(k).getIdObjet()));
+            jLabelPrixE.get(k).setText(Integer.toString(gestionVentesControler.getObjet(mesEncheres.get(k).getIdObjet()).getPrixAchat()));
+            jLabelTitreE.get(k).setVisible(true);
+            jLabelTitreE.get(k).setText(gestionVentesControler.getObjet(mesEncheres.get(k).getIdObjet()).getTitreA());
         }
         
         
@@ -132,6 +147,10 @@ public class ConsulterMesEncheres extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -176,7 +195,7 @@ public class ConsulterMesEncheres extends javax.swing.JFrame {
         jLabel17.setText("Montant Pas mis");
 
         jLableTitreR1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLableTitreR1.setText("Identifiant de l'objet");
+        jLableTitreR1.setText("Prix actuel");
 
         jLabel9.setText("jLabel9");
 
@@ -189,6 +208,15 @@ public class ConsulterMesEncheres extends javax.swing.JFrame {
         jLabel13.setText("jLabel13");
 
         jLabel14.setText("jLabel14");
+
+        jLabel18.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel18.setText("Titre objet");
+
+        jLabel19.setText("jLabel19");
+
+        jLabel20.setText("jLabel20");
+
+        jLabel21.setText("jLabel21");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -230,11 +258,12 @@ public class ConsulterMesEncheres extends javax.swing.JFrame {
                                                     .addComponent(jLabel10)
                                                     .addComponent(jLabel9)
                                                     .addComponent(jLabel11))))
-                                        .addGap(139, 139, 139)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLableTitreR1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
+                                                .addGap(139, 139, 139)
+                                                .addComponent(jLableTitreR1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(145, 145, 145)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel8)
                                                     .addComponent(jLabel6)
@@ -243,8 +272,14 @@ public class ConsulterMesEncheres extends javax.swing.JFrame {
                                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                         .addComponent(jLabel13)
                                                         .addComponent(jLabel12)
-                                                        .addComponent(jLabel14)))))))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                                        .addComponent(jLabel14)))))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel21)
+                                            .addComponent(jLabel19)
+                                            .addComponent(jLabel18)
+                                            .addComponent(jLabel20))))))
+                        .addGap(0, 133, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -280,19 +315,24 @@ public class ConsulterMesEncheres extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLableTitreR1))
+                    .addComponent(jLableTitreR1)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel20))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel14))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel14)
+                        .addComponent(jLabel21))
+                    .addComponent(jLabel11))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
@@ -370,7 +410,11 @@ public class ConsulterMesEncheres extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
