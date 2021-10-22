@@ -104,8 +104,7 @@ Se connecter en tant que « membre plus », réaliser une mise en Vente
  - Diagramme de Classe prévu
  ![DCLPrevu](img/dcl.png)
 <br>
- - **Diagramme de Classe réalisé**
-  &nbsp;
+ - Diagramme de Classe réalisé
  ![DCLActuel](img/DCLActuel.png)
 <br>
     &nbsp;La base de données devait au mieux représenter les informations par rapport au **besoin exprimé**, qui était donc de mettre en place un site fonctionnel et interactif entre les propriétaires de chiens et des gardiens, professionnels ou particuliers, ou d'autres propriétaires. Il a donc fallu **reflechir à la structure** de la Base de Données afin de pouvoir enregistrer chaque information nécessaire à **l'exploitation et le lien au site web.**
