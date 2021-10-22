@@ -75,4 +75,8 @@ public class GestionVentesControler {
     public String getNomPrenomMembre(int idMembre){
         return objet.getNomPrenomMembre(idMembre);
     }
+    
+    public Objet getObjet(int idObjet){
+        return objet.getObjet(idObjet);
+    }
 }

@@ -374,4 +374,43 @@ public class Objet {
         }
         return prenomNom;
     }
+    
+    public Objet getObjet(int id){
+        Objet objet = new Objet();
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        try {
+            connection = DbConnexionManager.getConnection();
+            pstmt = connection.prepareStatement("select * from Objet where idMembre =?");
+            pstmt.setInt(1, id);
+            result = pstmt.executeQuery();
+            while(result.next()){
+                int idObjet = result.getInt(1);
+                String titreA = result.getString(2);
+                String descO = result.getString(3);
+                int prixDepart = result.getInt(4);
+                int prixReserve = result.getInt(5);
+                int prixAchatImmediat = result.getInt(6);
+                String regiondelivraison = result.getString(7);
+                Date datedecloture = result.getDate(8);
+                String etatVente = result.getString(9);
+                int prixAchat = result.getInt(10);
+                int idMembre = result.getInt(11);
+                int idFrais = result.getInt(12);
+                int idCodeCat = result.getInt(13);
+                int idSousCategorie = result.getInt(14);
+                int idSous_sous = result.getInt(15);
+                
+                objet = new Objet(idObjet, titreA, descO, prixDepart, prixReserve, prixAchatImmediat, regiondelivraison,
+                        datedecloture, etatVente, prixAchat, fraisPort, idMembre, idFrais, idCodeCat, idSousCategorie, idSous_sous); 
+
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnexionManager.closeObjects(connection, pstmt);
+        }
+        return objet;
+    }
 }
