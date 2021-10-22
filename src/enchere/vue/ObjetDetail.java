@@ -26,6 +26,7 @@ public class ObjetDetail extends javax.swing.JFrame {
     private ArrayList<JLabel> jLabelMontants;
     private ArrayList<JLabel> jLabelDates;
     private ArrayList<Enchere> encheres;
+    private int nbVisiteObjet=5;
     private Membre membre;
     /**
      * Creates new form ObjetDetail
@@ -36,6 +37,9 @@ public class ObjetDetail extends javax.swing.JFrame {
     
     public ObjetDetail(Objet objet) {
         this.objet = objet;
+        int lastNbVisiteObjet=objet.getVisiteObjet();
+        nbVisiteObjet=lastNbVisiteObjet+1;
+        objet.setVisiteObjet(nbVisiteObjet);
         encheres = new ArrayList<Enchere>();
         gestionVentesControler = new GestionVentesControler();
         initComponents();
@@ -50,6 +54,7 @@ public class ObjetDetail extends javax.swing.JFrame {
         initComponentsBD(objet);
         
     }
+   
     
     public void initComponentsBD(Objet objet){
         jButtonEncherir.setVisible(false);
@@ -252,10 +257,11 @@ public class ObjetDetail extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -271,7 +277,7 @@ public class ObjetDetail extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(jLabel16)
                     .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(jLabel18)

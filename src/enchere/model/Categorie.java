@@ -9,7 +9,6 @@ import java.util.Iterator;
 public class Categorie {
     private int id;
     private String libCategorie;
-    private CategorieService cs;
     private ArrayList<Objet> listObjets;
     
     public Categorie(){
@@ -19,7 +18,6 @@ public class Categorie {
     Categorie(int id, String libelle) {
        this.id=id;
        this.libCategorie=libelle;
-       cs=new CategorieService();
        listObjets=new ArrayList<>();
     }
     
@@ -34,11 +32,8 @@ public class Categorie {
         try {
 
             connection = DbConnexionManager.getConnection();
-            
             statement = connection.createStatement();
-            
             rs = statement.executeQuery(GestionVenteSQL.GetCATE);
-            
             while (rs.next()) {
                 String cateAjout = rs.getString("LibCat");
                 result.add(cateAjout);

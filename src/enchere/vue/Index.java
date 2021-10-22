@@ -11,6 +11,8 @@ import enchere.model.MembreServiceCommercial;
 import enchere.model.MembreServiceInformatique;
 import enchere.model.MembreServiceJuridique;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -210,7 +212,14 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSinscrireActionPerformed
 
     private void jButtonStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStatsActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            StatsVue statVue= new StatsVue();
+            statVue.setVisible(true);
+            this.dispose();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jButtonStatsActionPerformed
 
