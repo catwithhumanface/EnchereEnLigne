@@ -259,20 +259,8 @@ insert into Region (regionL) VALUES ( 'Corée');
 insert into Region (regionL) VALUES ( 'nicaragua');
 insert into Region (regionL) VALUES ( "Côte d'Ivoire");
 
-insert into Objet (TitreA, DescO, PrixDepart, PrixReserve, Prixachatimmediat, Regiondelivraison, EtatVente, PrixAchat, FraisPort, idMembre, IdCodeCat, IdSousCategorie, IdSous_sous) values("titre", "desc", 100, 100, 300, "toulouse", "en cours", 0, 0, 1, 1, 1,1);
-
-insert into Objet (TitreA, DescO, PrixDepart, PrixReserve, Prixachatimmediat, Regiondelivraison, EtatVente, PrixAchat, FraisPort, idMembre, IdCodeCat, IdSousCategorie, IdSous_sous) values("titre1", "desc", 100, 100, 300, "toulouse", "en cours", 0, 0, 1, 1, 1,1);
 
 
-
-
-
-
-insert into Enchere values(200, 400, TIMESTAMP(NOW()), 1, 1);
-
-
-
-insert into Objet (TitreA, DescO, PrixDepart, PrixReserve, Prixachatimmediat, Regiondelivraison, EtatVente, PrixAchat, FraisPort, idMembre, IdCodeCat, IdSousCategorie, IdSous_sous, Datedecloture) values("titre1", "desc", 100, 100, 300, "toulouse", "en cours", 0, 0, 1, 1, 1,1, TIMESTAMP(now()));
 
 insert into Membre
 (
