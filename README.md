@@ -25,7 +25,7 @@
 Afin de répondre aux besoins exprimés de client, qui souhaite avoir une application des enchères en ligne, nous avons réalisé la modélisation et la programmation de l'application "Enchères en Ligne". Ce projet a été accompagné des enseignants de la formation M2 MIAGE IPM. <br>
 
 
-&nbsp; Nous avons donc modélisé et réalisé une application permet de **mettre en vente** d'un objet, **enchérir sur un objet en vente**, ainsi que **s'inscrire, se connecter, et les autres fonctionnalités adapté aux types de l'utilistaeur**.
+&nbsp; Nous avons donc modélisé et réalisé une application qui permet de **mettre en vente** un objet, **d'enchérir sur un objet en vente**, ainsi que de **s'inscrire, se connecter, et les autres fonctionnalités adaptées aux types de l'utilistaeur**.
 
 ## 4. Technologie
 UML<br>
